@@ -1,0 +1,9 @@
+{
+  "name": "react-string-avatar",
+  "version": "1.0.0",
+  "description": "my description",
+  "main": "index.js",
+  "repository": "https://github.com/ajsoriar/react-string-avatar.git",
+  "author": "asr <ajsoriar@gmail.com>",
+  "license": "MIT"
+}
