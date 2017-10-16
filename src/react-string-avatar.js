@@ -1,16 +1,55 @@
+import React, { PropTypes, Component } from 'react'
+
+class Andres3 extends React.Component {
+
+    _renderImage() {
+        return (
+            <div className="hello man">{ this.props.name } { this.props.age }</div>
+        ); 
+    }
+
+    render() {
+
+      let {name,age} = this.props;
+      if(name === undefined || age === undefined){
+        console.log('undefined props')
+      } else {
+        console.log('defined props')
+      }
+   
+      const size = this.props.size;
+      
+        return (
+            <div className="chin">{ this._renderImage() }</div>
+        );
+    }
+  }
+
+  Andres3.contextTypes = {
+    router: React.PropTypes.object.isRequired
+  };
+  
+  Andres3.defaultProps = {
+      name: "Andrew123",
+      age: 13
+    //cityList: [],
+    //provinceList: [],
+  };
+  
+  Andres3.propTypes = {
+    name: React.PropTypes.string.isRequired,
+    age: React.PropTypes.number.isRequired,
+    //cityList: React.PropTypes.array.isRequired,
+    //provinceList: React.PropTypes.array.isRequired,
+  }
+
+  export default Andres3;
+
+
+
+
+
 //'use strict';
-
-/*
-
-    How to use this:
-
-    <ReactStringAvatar 
-    name="Andres Soria"
-    size={48}
-    radius={5}
-    />
-
-*/
 
 /*
 <ng-avatar 
@@ -131,27 +170,6 @@ export default class ReactStringAvatar extends React.Component {
             ctx.fillStyle = bgcolor;
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-            /*
-
-            font_size = WIDTH / (2 / (that.props.fontScale / 100 ));     
-            ctx.font =that.props.fontWeight +" "+that.props.font_size +"px sans-serif";
-    
-            if (that.props.textShadow === true ) {
-                ctx.shadowColor = "black";
-                ctx.shadowOffsetX = 0; 
-                ctx.shadowOffsetY = 0; 
-                ctx.shadowBlur = 5;                        
-            }
-    
-            ctx.textAlign = "center";
-            ctx.fillStyle = textcolor;
-            //ctx.fillText(_str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (that.props.font_size / 3) + 5 );
-            ctx.fillText(that.props.str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (that.props.font_size / 3) );
-    
-            return canvas.toDataURL("image/"+that.props.pictureFormat );
-
-            */
-
             var _default = {
                 fontWeight: 100,
                 fontScale: 100,
@@ -216,68 +234,10 @@ export default class ReactStringAvatar extends React.Component {
             null
         );
         
-        /*
-        var html = '';
-        if (this.props.wrapper) html += '<div class="avatar-wrapper '+this.props.extraClasses +'" style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">';
-        html += '<img src="' + imgData + '" class="avatar-picture '+this.props.extraImgClasses +'" style="'+this.props.imgStyling +'" width="'+this.props.imgWidth +'" height="" />';
-        if (this.props.wrapper) html += '</div>';
-        */
-
-        //var html = '';
-        //if (this.props.wrapper) html += '<div class="avatar-wrapper '+this.props.extraClasses +'" style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">';
-        //html += '<img src="' + imgData + '" class="avatar-picture '+this.props.extraImgClasses +'" style="'+this.props.imgStyling +'" width="'+this.props.imgWidth +'" height="" />';
-        //if (this.props.wrapper) html += '</div>';
-
-        /*
-        {isLoggedIn ? (
-            <LogoutButton onClick={this.handleLogoutClick} />
-          ) : (
-            <LoginButton onClick={this.handleLoginClick} />
-          )}
-        */
-    
-        //var replacementElement = angular.element(html);
-        //currentElement.replaceWith(replacementElement);
-        //currentElement = replacementElement;
-        //return ( html )
-        //this.props.extraClasses = "avatar-wrapper "+ this.props.extraClasses;
-
-
-        // if ( this.props.wrapper == "true" ) { // style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">
-
             console.log("A");
 
-            return (// class="avatar-picture {this.props.extraImgClasses}" 
-                //<div class="{this.props.extraClasses}">  
-                <img src={imgData} style={ this.props.imgStyling } width={this.props.imgWidth } height="" />
-                //</div>
-            )           
-
-        /*
-        } else {
-
-            console.log("B");
-
-            return (// class="avatar-picture {this.props.extraImgClasses}" 
-                <img src={imgData} style={ this.props.imgStyling } width={this.props.imgWidth } height="" />
-            )  
-
-        }
-        */
-
-    } //this.props.renderImage ends here.
-
-    /*
-    _renderImage() {
-        return (
-            <div className="hello"><img width={this.props.size}
-                height={this.props.size}
-                style={imageStyle}
-                alt="andres"
-            />-a-{ this.props.name }-a-</div>
-        );
-    }
-    */
+        return ( <img src={imgData} style={ this.props.imgStyling } width={this.props.imgWidth } height="" /> )           
+    } 
 
     render() {
         //const size = this.props.size;
@@ -292,33 +252,3 @@ export default class ReactStringAvatar extends React.Component {
     }
 
 }
-
-    /*
-
-    var imgData = generateAvatar( _str, _pictureResolution, _pictureResolution, _bgcolor, _textcolor, null);
-    
-    var html = '';
-    if (_wrapper) html += '<div class="avatar-wrapper '+ _extraClasses +'" style="'+ _wrapper_styling +' width:' + _long + 'px; height:' + _long + 'px; '+ _extraStyles +'">';
-    html += '<img src="' + imgData + '" class="avatar-picture '+ _extraImgClasses +'" style="'+ _imgStyling +'" width="'+ _imgWidth +'" height="" />';
-    if (_wrapper) html += '</div>';
-
-    var replacementElement = angular.element(html);
-    currentElement.replaceWith(replacementElement);
-    currentElement = replacementElement;
-    */
-
-    /*
-        const size = 50;
-        const imageStyle = {
-            maxWidth: '100%',
-            width: size,
-            height: size
-        };
-        return (
-            <div className="hello"><img width={this.props.size}
-                height={this.props.size}
-                style={imageStyle}
-                alt="andres"
-            />-a-{ this.props.name }-a-</div>
-        );
-    */
