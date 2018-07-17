@@ -1,55 +1,16 @@
-import React, { PropTypes, Component } from 'react'
-
-class Andres3 extends React.Component {
-
-    _renderImage() {
-        return (
-            <div className="hello man">{ this.props.name } { this.props.age }</div>
-        ); 
-    }
-
-    render() {
-
-      let {name,age} = this.props;
-      if(name === undefined || age === undefined){
-        console.log('undefined props')
-      } else {
-        console.log('defined props')
-      }
-   
-      const size = this.props.size;
-      
-        return (
-            <div className="chin">{ this._renderImage() }</div>
-        );
-    }
-  }
-
-  Andres3.contextTypes = {
-    router: React.PropTypes.object.isRequired
-  };
-  
-  Andres3.defaultProps = {
-      name: "Andrew123",
-      age: 13
-    //cityList: [],
-    //provinceList: [],
-  };
-  
-  Andres3.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    age: React.PropTypes.number.isRequired,
-    //cityList: React.PropTypes.array.isRequired,
-    //provinceList: React.PropTypes.array.isRequired,
-  }
-
-  export default Andres3;
-
-
-
-
-
 //'use strict';
+
+/*
+
+    How to use this:
+
+    <StringAvatar 
+    name="Andres Soria"
+    size={48}
+    radius={5}
+    />
+
+*/
 
 /*
 <ng-avatar 
@@ -66,109 +27,93 @@ font-weight="500"
 font-scale="120"></ng-avatar>
 */
 
-
 //import React from 'react';
+//import React, { PropTypes, Component } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import React, { PropTypes, Component } from 'react'
+class StringAvatar extends React.Component {
 
-const propTypes = {
-    //name: PropTypes.string,
-    
-    initials: PropTypes.string,
-    width: PropTypes.string,
-    bgcolor: PropTypes.string,
-    textColor: PropTypes.string,
-    wrapper: PropTypes.string,
-    pictureResolution: PropTypes.number,
-    pixelated: PropTypes.string,
-    roundShape: PropTypes.string,
-    class: PropTypes.string,
-    imgClass: PropTypes.string,
-    style: PropTypes.string,
-    string: PropTypes.string,
-    cornerRadius: PropTypes.string,
-    pictureFormat: PropTypes.string,
-    colorsPalette: PropTypes.string,
-    autoColor: PropTypes.string,
-    fontWeight: PropTypes.string,
-    fontScale: PropTypes.string,
-    textShadow: PropTypes.string,
-    bind: PropTypes.string,
-    maxLength: PropTypes.string,
-    upperCase: PropTypes.string,
-};
-  
-const defaultProps = {
-    //name: 'xxx',
+    static displayName = 'StringAvatar';
 
-    pictureResolution: 50, //256,
-    wrapper: true,
-    //str: "", //scope.initials || "",
-    bgcolor: "#000",
-    textcolor: "#fff",
-    pixelated: false,
-    imgStyling: "vertical-align:top;",
-    roundShape: false,
-    wrapper_styling: "border-radius:0; display:block; overflow:hidden;",
-    extraClasses: "",
-    extraImgClasses: "",
-    extraStyles: "",
-    cornerRadius: "0",
-    pictureFormat: "png",
-    colorsPalette: ["#bdc3c7","#6f7b87","#2c3e50","#2f3193","#662d91","#922790","#ec2176","#ed1c24","#f36622","#f8941e","#fab70f","#fdde00","#d1d219","#8ec73f","#00a650","#00aa9c","#00adef","#0081cd","#005bab"],
-    autoColor: false,
-    fontWeight: 100,
-    fontScale: 100,
-    textShadow: false,
-    bind: false,
-    imgWidth: "100%",
-    upperCase: false,
-};
-
-export default class ReactStringAvatar extends React.Component {
-
-    static displayName = 'ReactStringAvatar'
 
     _renderImage() {
+ 
+    var _long = 45,
+        _picture_resolution = 256,
+        _wrapper = true,
+        _str = "", //scope.initials || "",
+        _bgcolor = "#000",
+        _textcolor = "#fff",
+        _pixelated = false,
+        _img_styling = "vertical-align:top;",
+        _roundShape = false,
+        _wrapper_styling = "border-radius:0; display:block; overflow:hidden;",
+        _extra_classes = "",
+        _extra_img_classes = "",
+        _extra_styles = "",
+        _corner_radius = "0",
+        _picture_format = "png",
+        _colors_palette = ["#bdc3c7","#6f7b87","#2c3e50","#2f3193","#662d91","#922790","#ec2176","#ed1c24","#f36622","#f8941e","#fab70f","#fdde00","#d1d219","#8ec73f","#00a650","#00aa9c","#00adef","#0081cd","#005bab"],
+        _autoColor = false,
+        _font_weight = 100,
+        _font_scale = 100,
+        _text_shadow = false,
+        _bind = false,
+        _img_width = "100%",
+        _upperCase = false;
 
-        /*
 
-        // thanks to: https://stackoverflow.com/questions/33957229/react-tutorial-typeerror-cannot-read-property-props-of-undefined
+        //var that = this;
 
-        I had the same error message "Cannot read property 'props' of undefined", but from a different cause: when this is called from within a function, javascript can not reach the variable because this is in an outer scope. (Note: I was in ES5)
-        In this case, simply store this in another variable, prior to the function (in the scope of your component): var that = this;
-        Then you will be able to call that.props from within the function.
-        */
+        function generateAvatar(name, w, h, bgColor, textcolor, bgImage) {
 
-        var that = this;
-    
-        function generateAvatar(name, w, h, bgcolor, textcolor, bgImage) {
-            
-            var WIDTH = 256, 
-                HEIGHT = 256, 
-                canvas, 
-                ctx, 
+            var WIDTH = 256,
+                HEIGHT = 256,
+                canvas,
+                ctx,
                 font_size;
 
-            console.log("w:", w );
-            console.log("h:", h );
-            console.log("name:", name );
-    
+            console.log("w:", w);
+            console.log("h:", h);
+            console.log("name:", name);
+
             if (w != undefined && w > 0) {
                 if (h != undefined && h > 0) {
                     WIDTH = w;
                     HEIGHT = h;
                 }
             }
-    
+
             canvas = document.createElement('canvas');
             canvas.id = "ngAvatar-" + Date.now();
             canvas.width = WIDTH;
             canvas.height = HEIGHT;
-    
+
             ctx = canvas.getContext('2d');
-            ctx.fillStyle = bgcolor;
+            ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+            /*
+
+            font_size = WIDTH / (2 / (that.props.fontScale / 100 ));     
+            ctx.font =that.props.fontWeight +" "+that.props.font_size +"px sans-serif";
+    
+            if (that.props.textShadow === true ) {
+                ctx.shadowColor = "black";
+                ctx.shadowOffsetX = 0; 
+                ctx.shadowOffsetY = 0; 
+                ctx.shadowBlur = 5;                        
+            }
+    
+            ctx.textAlign = "center";
+            ctx.fillStyle = textcolor;
+            //ctx.fillText(_str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (that.props.font_size / 3) + 5 );
+            ctx.fillText(that.props.str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (that.props.font_size / 3) );
+    
+            return canvas.toDataURL("image/"+that.props.pictureFormat );
+
+            */
 
             var _default = {
                 fontWeight: 100,
@@ -177,43 +122,47 @@ export default class ReactStringAvatar extends React.Component {
                 pictureFormat: "png"
             };
 
-            var str = getInitialsFromString( name ); //"Try This!");
+            var str = getInitialsFromString(name); //"Try This!");
 
-            console.log("str:", str );
+            console.log("str:", str);
 
-            font_size = WIDTH / ( 2 / ( _default.fontScale / 100 ) );     
+            font_size = WIDTH / (2 / (_default.fontScale / 100));
 
-            console.log("font_size:", font_size );
+            console.log("font_size:", font_size);
 
-            ctx.font = _default.fontWeight +" "+ font_size +"px sans-serif";
-    
-            if ( _default.textShadow === true ) {
+            ctx.font = _default.fontWeight + " " + font_size + "px sans-serif";
+
+            if (_default.textShadow === true) {
                 ctx.shadowColor = "black";
-                ctx.shadowOffsetX = 0; 
-                ctx.shadowOffsetY = 0; 
-                ctx.shadowBlur = 5;                        
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+                ctx.shadowBlur = 5;
             }
-    
+
             ctx.textAlign = "center";
             ctx.fillStyle = "#fff"; //textcolor;
             //ctx.fillText(_str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (_default.font_size / 3) + 5 );
-            ctx.fillText( str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + ( font_size / 3) );
-    
-            return canvas.toDataURL( "image/"+_default.pictureFormat );
+            ctx.fillText(str, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (font_size / 3));
+
+            return canvas.toDataURL("image/" + _default.pictureFormat);
         }
-    
-        function getInitialsFromString( str ){
-    
-            var output = "", 
-                i = 0, 
+
+        function getInitialsFromString(str) {
+
+            console.log("str:", str );
+
+            if (!str) return ""
+
+            var output = "",
+                i = 0,
                 str = str.split(" "),
                 len = str.length;
-            
-            for ( i; i < len; i++ ) if ( str[i] != "" ) output += str[i][0]; //.toUpperCase();
+
+            for (i; i < len; i++) if (str[i] != "") output += str[i][0]; //.toUpperCase();
 
             return output;
         }
-    
+
         const size = 50;
 
         const imageStyle = {
@@ -222,33 +171,203 @@ export default class ReactStringAvatar extends React.Component {
             height: size
         };
 
-        console.log("this.props:", this.props );
+        console.log("this.props:", this.props);
         //console.log("h:", h );
 
+        var textString = this.props.str || this.props.initials;
+
+        // textString = this.props.initials
+        // if (typeof textString != 'string') {
+        //     return null
+        // }
+
         var imgData = generateAvatar(
-            this.props.str, 
+            textString,
             this.props.pictureResolution,
             this.props.pictureResolution,
-            this.props.bgcolor,
-            this.props.textcolor, 
+            this.props.bgColor,
+            this.props.textcolor,
             null
         );
-        
-            console.log("A");
 
-        return ( <img src={imgData} style={ this.props.imgStyling } width={this.props.imgWidth } height="" /> )           
-    } 
+        /*
+        var html = '';
+        if (this.props.wrapper) html += '<div class="avatar-wrapper '+this.props.extraClasses +'" style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">';
+        html += '<img src="' + imgData + '" class="avatar-picture '+this.props.extraImgClasses +'" style="'+this.props.imgStyling +'" width="'+this.props.imgWidth +'" height="" />';
+        if (this.props.wrapper) html += '</div>';
+        */
+
+        //var html = '';
+        //if (this.props.wrapper) html += '<div class="avatar-wrapper '+this.props.extraClasses +'" style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">';
+        //html += '<img src="' + imgData + '" class="avatar-picture '+this.props.extraImgClasses +'" style="'+this.props.imgStyling +'" width="'+this.props.imgWidth +'" height="" />';
+        //if (this.props.wrapper) html += '</div>';
+
+        /*
+        {isLoggedIn ? (
+            <LogoutButton onClick={this.handleLogoutClick} />
+          ) : (
+            <LoginButton onClick={this.handleLoginClick} />
+          )}
+        */
+
+        //var replacementElement = angular.element(html);
+        //currentElement.replaceWith(replacementElement);
+        //currentElement = replacementElement;
+        //return ( html )
+        //this.props.extraClasses = "avatar-wrapper "+ this.props.extraClasses;
+
+
+        // if ( this.props.wrapper == "true" ) { // style="'+this.props.wrapper_styling +' width:' +this.props.long + 'px; height:' +this.props.long + 'px; '+this.props.extraStyles +'">
+
+        console.log("A");
+
+        /*
+
+        var _wrapper = this.props.wrapper;
+        if ( _wrapper === false ) { 
+            _img_width = _long;
+        }
+
+        var _pixelated = this.props.pixelated;
+        if ( _pixelated === true ) { 
+            _img_styling += "image-rendering:pixelated; image-rendering:-moz-crisp-edges;"; 
+        }
+
+
+        if (this.props.roundShape != undefined) {
+            _roundShape = this.props.roundShape;
+            if ( _roundShape ) _wrapper_styling += "border-radius: "+ _long +"px;";
+        } else {
+            if ( this.props.cornerRadius != undefined ){
+                _corner_radius = this.props.cornerRadius;
+                _wrapper_styling += "border-radius: "+ _corner_radius +"px;";
+            }
+        }
+        */
+
+        // var html = '';
+        // if (_wrapper) html += '<div class="avatar-wrapper '+ _extraClasses +'" style="'+ _wrapper_styling +' width:' + _long + 'px; height:' + _long + 'px; '+ _extraStyles +'">';
+        // html += '<img src="' + imgData + '" class="avatar-picture '+ _extraImgClasses +'" style="'+ _imgStyling +'" width="'+ _imgWidth +'" height="" />';
+        // if (_wrapper) html += '</div>';
+
+
+        return (// class="avatar-picture {this.props.extraImgClasses}" 
+            //<div class="{this.props.extraClasses}">  
+            <img src={imgData} style={this.props.imgStyling} width={this.props.width} height="" /> //+ _img_styling
+            //</div>
+        )
+
+        /*
+        } else {
+
+            console.log("B");
+
+            return (// class="avatar-picture {this.props.extraImgClasses}" 
+                <img src={imgData} style={ this.props.imgStyling } width={this.props.imgWidth } height="" />
+            )  
+
+        }
+        */
+
+    } //this.props.renderImage ends here.
 
     render() {
-        //const size = this.props.size;
+        
+        const { initials } = this.props;
 
         //let {name, size, radius} = this.props;
         //let char = name.trim()[0].toUpperCase();
         //let bgColor = "#f00";
 
+        var text = this._renderImage( initials );
+
         return (
-            <div className="ajsr-avatar">{ this._renderImage() }</div>
+            <div className="ajsr-avatar">{text}</div>
         );
     }
 
 }
+
+/*
+
+var imgData = generateAvatar( _str, _pictureResolution, _pictureResolution, _bgColor, _textcolor, null);
+ 
+var html = '';
+if (_wrapper) html += '<div class="avatar-wrapper '+ _extraClasses +'" style="'+ _wrapper_styling +' width:' + _long + 'px; height:' + _long + 'px; '+ _extraStyles +'">';
+html += '<img src="' + imgData + '" class="avatar-picture '+ _extraImgClasses +'" style="'+ _imgStyling +'" width="'+ _imgWidth +'" height="" />';
+if (_wrapper) html += '</div>';
+
+var replacementElement = angular.element(html);
+currentElement.replaceWith(replacementElement);
+currentElement = replacementElement;
+*/
+
+/*
+    const size = 50;
+    const imageStyle = {
+        maxWidth: '100%',
+        width: size,
+        height: size
+    };
+    return (
+        <div className="hello"><img width={this.props.size}
+            height={this.props.size}
+            style={imageStyle}
+            alt="andres"
+        />-a-{ this.props.name }-a-</div>
+    );
+*/
+
+StringAvatar.propTypes = {
+    initials: PropTypes.string,
+    //width: PropTypes.string,
+    wrapper: PropTypes.bool,
+    bgColor: PropTypes.string,
+    textColor: PropTypes.string,
+    pictureResolution: PropTypes.number,
+    width: PropTypes.number,
+    pixelated: PropTypes.bool,
+    roundShape: PropTypes.bool,
+    //class: PropTypes.string, //*
+    //imgClass: PropTypes.string, //*
+    //style: PropTypes.string, //*
+    //string: PropTypes.string, //*
+    cornerRadius: PropTypes.string,
+    pictureFormat: PropTypes.string,
+    colorsPalette: PropTypes.array,
+    autoColor: PropTypes.bool,
+    fontWeight: PropTypes.number,
+    fontScale: PropTypes.number,
+    textShadow: PropTypes.bool,
+    bind: PropTypes.bool,
+    //maxLength: PropTypes.string, //*
+    upperCase: PropTypes.bool,
+};
+
+StringAvatar.defaultProps = {
+    initials: null,
+    wrapper: true,
+    bgColor: "#000",
+    textcolor: "#fff",
+    pictureResolution: 50, //256,
+    width: 60,
+    pixelated: false,
+    //imgStyling: "vertical-align:top;",
+    roundShape: false,
+    //wrapper_styling: "border-radius:0; display:block; overflow:hidden;",
+    //extraClasses: "",
+    //extraImgClasses: "",
+    //extraStyles: "",
+    cornerRadius: "0",
+    pictureFormat: "png",
+    colorsPalette: ["#bdc3c7", "#6f7b87", "#2c3e50", "#2f3193", "#662d91", "#922790", "#ec2176", "#ed1c24", "#f36622", "#f8941e", "#fab70f", "#fdde00", "#d1d219", "#8ec73f", "#00a650", "#00aa9c", "#00adef", "#0081cd", "#005bab"],
+    autoColor: false,
+    fontWeight: 100,
+    fontScale: 100,
+    textShadow: false,
+    bind: false,
+    //imgWidth: "100%",
+    upperCase: false,
+};
+
+export default StringAvatar;
