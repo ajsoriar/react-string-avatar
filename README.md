@@ -26,7 +26,7 @@ React String Avatar is a simple React component that generates a letter's avatar
 
 MIT
 
-Copyright (c) 2016 
+Copyright (c) 2018 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
