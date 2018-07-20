@@ -4,25 +4,38 @@ React String Avatar is a simple React component that generates a letter's avatar
 
 ![react-string-avatar auto-color feature examples](./demo/react-string-avatar-autocolor-example.png?raw=true "react-string-avatar auto-color feature examples")
 
-## Quick start.
+## Quick start
 
-    $ npm install react-string-avatar --save
+```javascript
+npm install react-string-avatar --save
+```
 
-#### 1 Download and Install angular-avatar:
+### 1 Download and Install react-string-avatar
 
- - Yarn: **yarn add react-string-avatar**
- - NPM: **npm install react-string-avatar**
- - github: **https://github.com/ajsoriar/react-string-avatar**
+- Yarn: **yarn add react-string-avatar**
+- NPM: **npm install react-string-avatar**
+- github: **https://github.com/ajsoriar/react-string-avatar**
 
-#### 2 Import Custom Element:
+### 2 Import Custom Element
 
-    import StringAvatar from 'react-string-avatar';
+```javascript
+import Avatar from 'react-string-avatar';
+```
 
-#### 3 Start using it!
+### 3 Start using it'!'
 
-    <StringAvatar name="Foo Bar" />
+```javascript
+<Avatar string="Foo Bar" />
+```
 
-More usage examples ready to copy and paste: :+1:
+#### 3.1 Auto-color feature:
+
+```javascript
+<Avatar string="Foo Bar" autoColor={true} />
+```
+
+#### 3.2 More usage examples ready to copy and paste: :+1:
+
 ```javascript
 <Avatar initials="A"></Avatar>
 <Avatar initials="AS" bgColor="#00FF00"></Avatar>
@@ -39,11 +52,11 @@ More usage examples ready to copy and paste: :+1:
 <Avatar initials="png" picture-format="png" bgColor="purple" textColor="yellow" width={64} corner-radius={5} ></Avatar>
 ```
 
-#### 4 License
+### 4 License
 
 MIT
 
-Copyright (c) 2018 
+Copyright (c) 2018
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
