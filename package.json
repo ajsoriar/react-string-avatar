@@ -1,6 +1,6 @@
 {
   "name": "react-string-avatar",
-  "version": "0.0.2",
+  "version": "0.0.31",
   "description": "React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.",
   "main": "dist/react-string-avatar.min.js",
   "repository": {
@@ -20,9 +20,12 @@
   ],
   "author": "asr <ajsoriar@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "html-webpack-plugin": "^2.30.1",
     "moment": "^2.18.1",
     "path": "^0.12.7",
@@ -30,11 +33,7 @@
     "react-datetime": "^2.10.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1"
+    "webpack-dev-server": "^2.8.2"
   },
   "scripts": {
     "start": "webpack-dev-server"
