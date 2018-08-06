@@ -1,66 +1,9 @@
-//'use strict';
-
-/*
-
-    How to use this:
-
-    <StringAvatar 
-    name="Andres Soria"
-    size={48}
-    radius={5}
-    />
-
-*/
-
-/*
-<ng-avatar 
-initials="{{ event.event_context.Username }}" 
-upper-case="true" 
-img-class="image-class" 
-wrapper="false" 
-max-length="1" 
-width="40" 
-corner-radius="3" 
-class="left" 
-auto-color="true" 
-font-weight="500" 
-font-scale="120"></ng-avatar>
-*/
-
-//import React from 'react';
-//import React, { PropTypes, Component } from 'react'
 import React from 'react';
 import PropTypes from 'prop-types';
 
 class StringAvatar extends React.Component {
 
     static displayName = 'StringAvatar';
-
-/*
-    initials: null,
-    wrapper: true,
-    bgColor: "#000",
-    textColor: "#fff",
-    pictureResolution: 50, //256,
-    width: 60,
-    pixelated: false,
-    //imgStyling: "vertical-align:top;",
-    roundShape: false,
-    //wrapperStyling: "border-radius:0; display:block; overflow:hidden;",
-    //extraClasses: "",
-    //extraImgClasses: "",
-    //extraStyles: "",
-    cornerRadius: "0",
-    pictureFormat: "png",
-    colorsPalette: ["#bdc3c7", "#6f7b87", "#2c3e50", "#2f3193", "#662d91", "#922790", "#ec2176", "#ed1c24", "#f36622", "#f8941e", "#fab70f", "#fdde00", "#d1d219", "#8ec73f", "#00a650", "#00aa9c", "#00adef", "#0081cd", "#005bab"],
-    autoColor: false,
-    fontWeight: 100,
-    fontScale: 100,
-    textShadow: false,
-    bind: false,
-    //imgWidth: "100%",
-    upperCase: false,
-*/
 
     _renderImage() {
  
@@ -77,7 +20,7 @@ class StringAvatar extends React.Component {
             _extra_classes = "",
             _extra_img_classes = "",
             _extra_styles = "",
-            _corner_radius = "0",
+            _corner_radius = 0,
             _picture_format = "png",
             _colors_palette = ["#bdc3c7","#6f7b87","#2c3e50","#2f3193","#662d91","#922790","#ec2176","#ed1c24","#f36622","#f8941e","#fab70f","#fdde00","#d1d219","#8ec73f","#00a650","#00aa9c","#00adef","#0081cd","#005bab"],
             _autoColor = false,
@@ -148,10 +91,10 @@ class StringAvatar extends React.Component {
 
             if (!str) return ""
 
-            var output = "",
-                i = 0,
-                str = str.split(" "),
-                len = str.length;
+      var output = '',
+        i = 0,
+        str = str.split(' '),
+        len = str.length;
 
             for (i; i < len; i++) if (str[i] != "") output += str[i][0]; //.toUpperCase();
 
@@ -300,7 +243,7 @@ StringAvatar.propTypes = {
     //imgClass: PropTypes.string, //*
     style: PropTypes.object,
     string: PropTypes.string, //*
-    cornerRadius: PropTypes.string,
+    cornerRadius: PropTypes.number,
     pictureFormat: PropTypes.string,
     colorsPalette: PropTypes.array,
     autoColor: PropTypes.bool,
@@ -329,7 +272,7 @@ StringAvatar.defaultProps = {
     //extraStyles: "",
     style: {},
     string: null,
-    cornerRadius: "0",
+    cornerRadius: 0,
     pictureFormat: "png",
     colorsPalette: ["#bdc3c7", "#6f7b87", "#2c3e50", "#2f3193", "#662d91", "#922790", "#ec2176", "#ed1c24", "#f36622", "#f8941e", "#fab70f", "#fdde00", "#d1d219", "#8ec73f", "#00a650", "#00aa9c", "#00adef", "#0081cd", "#005bab"],
     autoColor: false,
