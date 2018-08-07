@@ -37,6 +37,7 @@ import Avatar from 'react-string-avatar';
 #### 3.2 More usage examples ready to copy and paste: :+1:
 
 ```javascript
+<Avatar initials="A"></Avatar>
 <Avatar initials="AS" bgColor="#00FF00"></Avatar>
 <Avatar initials="AJS" bgColor="cyan" textColor="blue" roundShape={true} ></Avatar>
 <Avatar initials="AJ" bgColor="red" textColor="yellow" pictureResolution={512} width={64}></Avatar>
