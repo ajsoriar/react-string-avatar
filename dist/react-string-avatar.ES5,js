@@ -1,0 +1,445 @@
+/**
+ * react-string-avatar
+ * React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.
+ * @version v0.0.4 - 2018-08-07
+ * @link https://github.com/ajsoriar/react-string-avatar
+ * @author Andres J. Soria R. <ajsoriar@gmail.com>
+ * @license MIT License, http://www.opensource.org/licenses/MIT
+ */
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = (function() {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  return function(Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+})();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return call && (typeof call === "object" || typeof call === "function")
+    ? call
+    : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError(
+      "Super expression must either be null or a function, not " +
+        typeof superClass
+    );
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass)
+    Object.setPrototypeOf
+      ? Object.setPrototypeOf(subClass, superClass)
+      : (subClass.__proto__ = superClass);
+}
+
+var StringAvatar = (function(_React$Component) {
+  _inherits(StringAvatar, _React$Component);
+
+  function StringAvatar() {
+    _classCallCheck(this, StringAvatar);
+
+    return _possibleConstructorReturn(
+      this,
+      (StringAvatar.__proto__ || Object.getPrototypeOf(StringAvatar)).apply(
+        this,
+        arguments
+      )
+    );
+  }
+
+  _createClass(StringAvatar, [
+    {
+      key: "_renderImage",
+
+      //static displayName = 'StringAvatar';
+
+      value: function _renderImage() {
+        var _long = 45,
+          //_picture_resolution = 256,
+          //_wrapper = true,
+          _str = "",
+          //scope.initials || "",
+          _bgColor = "#000",
+          //_textColor = "#fff",
+          _pixelated = false,
+          _img_styling = { verticalAlign: "top" },
+          _roundShape = false,
+          _defaultWrapperStyling =
+            "border-radius:0; display:block; overflow:hidden;",
+          //_extra_classes = "",
+          //_extra_img_classes = "",
+          //_extra_styles = "",
+          _corner_radius = 0,
+          //_picture_format = "png",
+          _colors_palette = [
+            "#bdc3c7",
+            "#6f7b87",
+            "#2c3e50",
+            "#2f3193",
+            "#662d91",
+            "#922790",
+            "#ec2176",
+            "#ed1c24",
+            "#f36622",
+            "#f8941e",
+            "#fab70f",
+            "#fdde00",
+            "#d1d219",
+            "#8ec73f",
+            "#00a650",
+            "#00aa9c",
+            "#00adef",
+            "#0081cd",
+            "#005bab"
+          ],
+          _autoColor = false;
+        //_font_weight = 100,
+        //_font_scale = 100,
+        //_text_shadow = false,
+        //_bind = false,
+        //_img_width = "100%",
+        //_upperCase = false;
+
+        // -----------------------------
+        // utility functions
+        // -----------------------------
+
+        function generateAvatar(text, w, h, bgColor, bgImage, props) {
+          var WIDTH = 256,
+            HEIGHT = 256,
+            canvas,
+            ctx,
+            font_size;
+
+          //console.log("w:", w);
+          //console.log("h:", h);
+          //console.log("text:", text);
+
+          if (w != undefined && w > 0) {
+            if (h != undefined && h > 0) {
+              WIDTH = w;
+              HEIGHT = h;
+            }
+          }
+
+          canvas = document.createElement("canvas");
+          canvas.id = "ngAvatar-" + Date.now();
+          canvas.width = WIDTH;
+          canvas.height = HEIGHT;
+
+          ctx = canvas.getContext("2d");
+          ctx.fillStyle = bgColor;
+          ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+          font_size = WIDTH / (2 / (props.fontScale / 100));
+
+          //console.log("font_size:", font_size);
+
+          ctx.font = props.fontWeight + " " + font_size + "px sans-serif";
+
+          if (props.textShadow === true) {
+            ctx.shadowColor = "black";
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowBlur = 5;
+          }
+
+          ctx.textAlign = "center";
+          ctx.fillStyle = props.textColor;
+          //ctx.fillText(_text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (_default.font_size / 3) + 5 );
+          ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + font_size / 3);
+
+          return canvas.toDataURL("image/" + props.pictureFormat);
+        }
+
+        function getInitialsFromString(str) {
+          //console.log("str:", str);
+
+          if (!str) return "";
+
+          var output = "",
+            i = 0,
+            str = str.split(" "),
+            len = str.length;
+
+          for (i; i < len; i++) {
+            if (str[i] != "") output += str[i][0];
+          } //.toUpperCase();
+
+          return output;
+        }
+
+        // -----------------------------
+        // checkValues
+        // -----------------------------
+
+        //console.log("this.props:", this.props);
+
+        // Create text to be shown
+
+        if (this.props.initials != undefined) {
+          _str = this.props.initials;
+        }
+
+        if (this.props.string != undefined) {
+          _str = getInitialsFromString(this.props.string);
+        }
+
+        // Calculate color
+
+        if (this.props.bgColor != undefined) {
+          _bgColor = this.props.bgColor;
+        } else {
+          if (this.props.autoColor != undefined) {
+            _autoColor = this.props.autoColor;
+            if (_autoColor === true) {
+              var i,
+                lon = _str.length,
+                charIndex = 0,
+                colorIndex;
+              for (i = 0; i < lon; i++) {
+                charIndex = _str.charCodeAt(i);
+              }
+              colorIndex = charIndex % _colors_palette.length;
+              _bgColor = _colors_palette[colorIndex];
+            }
+          }
+        }
+
+        // --------------------------
+        // Create the image here
+        // --------------------------
+
+        var imgData = generateAvatar(
+          _str,
+          this.props.pictureResolution,
+          this.props.pictureResolution,
+          _bgColor, //this.props.bgColor,
+          null,
+          this.props
+        );
+
+        // ------------------------------------------
+        // Create HTML and styles wraping the image
+        // ------------------------------------------
+
+        var _img_styling = _defineProperty(
+          { imageRendering: "pixelated" },
+          "imageRendering",
+          "-moz-crisp-edges"
+        );
+
+        var _pixelated = this.props.pixelated;
+        if (_pixelated === true) {
+          _img_styling.imageRendering = "pixelated";
+          //_img_styling.imageRendering = "-moz-crisp-edges";
+        }
+
+        var _defaultWrapperStyling = {
+          overflow: "hidden",
+          width: this.props.width + "px",
+          height: this.props.width + "px",
+          boxSizing: "unset"
+        };
+
+        if (this.props.roundShape != undefined) {
+          //console.log("1");
+          _roundShape = this.props.roundShape;
+          if (_roundShape) {
+            //console.log("2");
+            _defaultWrapperStyling.borderRadius = this.props.width + "px";
+          }
+        } else {
+          //console.log("3");
+          if (this.props.cornerRadius != undefined) {
+            //console.log("4");
+            _corner_radius = this.props.cornerRadius;
+            _defaultWrapperStyling.borderRadius = _corner_radius + "px";
+          }
+        }
+
+        //console.log(">> this.props.wrapperStyle:", this.props.wrapperStyle );
+        //console.log(">> _defaultWrapperStyling:", _defaultWrapperStyling );
+
+        _defaultWrapperStyling = Object.assign(
+          {},
+          this.props.wrapperStyle,
+          _defaultWrapperStyling
+        );
+        //console.log(">> _defaultWrapperStyling B:", _defaultWrapperStyling );
+
+        //var imgHtml = '<img src={imgData} style={_img_styling} width={this.props.width} height="" />';
+        var imgHtml = _react2.default.createElement("img", {
+          src: imgData,
+          style: _img_styling,
+          width: this.props.width,
+          height: ""
+        });
+
+        if (this.props.wrapper) {
+          //return '<div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>';
+          return _react2.default.createElement(
+            "div",
+            { className: "avatar-wrapper ", style: _defaultWrapperStyling },
+            imgHtml
+          );
+        } else {
+          return imgHtml;
+        }
+      } //this.props.renderImage ends here.
+    },
+    {
+      key: "render",
+      value: function render() {
+        return this._renderImage();
+      }
+    }
+  ]);
+
+  return StringAvatar;
+})(_react2.default.Component);
+
+StringAvatar.propTypes = {
+  initials: _propTypes2.default.string,
+  //width: PropTypes.string,
+  wrapper: _propTypes2.default.bool,
+  bgColor: _propTypes2.default.string,
+  textColor: _propTypes2.default.string,
+  pictureResolution: _propTypes2.default.number,
+  width: _propTypes2.default.number,
+  pixelated: _propTypes2.default.bool,
+  roundShape: _propTypes2.default.bool,
+  defaultWrapperStyling: _propTypes2.default.object,
+  wrapperStyle: _propTypes2.default.object,
+  //class: PropTypes.string, //*
+  //imgClass: PropTypes.string, //*
+
+  string: _propTypes2.default.string, //*
+  cornerRadius: _propTypes2.default.number,
+  pictureFormat: _propTypes2.default.string,
+  colorsPalette: _propTypes2.default.array,
+  autoColor: _propTypes2.default.bool,
+  fontWeight: _propTypes2.default.number,
+  fontScale: _propTypes2.default.number,
+  textShadow: _propTypes2.default.bool,
+  bind: _propTypes2.default.bool,
+  //maxLength: PropTypes.string, //*
+  upperCase: _propTypes2.default.bool
+};
+
+StringAvatar.defaultProps = {
+  initials: null,
+  wrapper: true,
+  bgColor: "#000",
+  textColor: "#fff",
+  pictureResolution: 50, //256,
+  width: 60,
+  pixelated: false,
+  //imgStyling: "vertical-align:top;",
+  roundShape: false,
+  defaultWrapperStyling: {
+    borderRadius: 0,
+    display: "block",
+    overflow: "hidden"
+  },
+  wrapperStyle: {},
+  //extraClasses: "",
+  //extraImgClasses: "",
+  //extraStyles: "",
+
+  string: null,
+  cornerRadius: 0,
+  pictureFormat: "png",
+  colorsPalette: [
+    "#bdc3c7",
+    "#6f7b87",
+    "#2c3e50",
+    "#2f3193",
+    "#662d91",
+    "#922790",
+    "#ec2176",
+    "#ed1c24",
+    "#f36622",
+    "#f8941e",
+    "#fab70f",
+    "#fdde00",
+    "#d1d219",
+    "#8ec73f",
+    "#00a650",
+    "#00aa9c",
+    "#00adef",
+    "#0081cd",
+    "#005bab"
+  ],
+  autoColor: false,
+  fontWeight: 100,
+  fontScale: 100,
+  textShadow: false,
+  bind: false,
+  //imgWidth: "100%",
+  upperCase: false
+};
+
+exports.default = StringAvatar;

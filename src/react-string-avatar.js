@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class StringAvatar extends React.Component {
 
-  static displayName = 'StringAvatar';
+  //static displayName = 'StringAvatar';
 
   _renderImage() {
 
@@ -187,11 +187,12 @@ class StringAvatar extends React.Component {
     //console.log(">> _defaultWrapperStyling B:", _defaultWrapperStyling );
     
     
-
-    var imgHtml = <img src={imgData} style={_img_styling} width={this.props.width} height="" />
+    //var imgHtml = '<img src={imgData} style={_img_styling} width={this.props.width} height="" />';
+    var imgHtml = <img src={imgData} style={_img_styling} width={this.props.width} height="" />;
 
     if (this.props.wrapper) {
-      return <div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>
+      //return '<div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>';
+      return <div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>;
     } else {
       return imgHtml
     }
