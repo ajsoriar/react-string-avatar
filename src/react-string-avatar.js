@@ -8,28 +8,28 @@ class StringAvatar extends React.Component {
   _renderImage() {
 
     var _long = 45,
-      _picture_resolution = 256,
-      _wrapper = true,
+      //_picture_resolution = 256,
+      //_wrapper = true,
       _str = "", //scope.initials || "",
       _bgColor = "#000",
-      _textColor = "#fff",
+      //_textColor = "#fff",
       _pixelated = false,
       _img_styling = { verticalAlign: 'top' },
       _roundShape = false,
       _defaultWrapperStyling = "border-radius:0; display:block; overflow:hidden;",
-      _extra_classes = "",
-      _extra_img_classes = "",
-      _extra_styles = "",
+      //_extra_classes = "",
+      //_extra_img_classes = "",
+      //_extra_styles = "",
       _corner_radius = 0,
-      _picture_format = "png",
+      //_picture_format = "png",
       _colors_palette = ["#bdc3c7", "#6f7b87", "#2c3e50", "#2f3193", "#662d91", "#922790", "#ec2176", "#ed1c24", "#f36622", "#f8941e", "#fab70f", "#fdde00", "#d1d219", "#8ec73f", "#00a650", "#00aa9c", "#00adef", "#0081cd", "#005bab"],
-      _autoColor = false,
-      _font_weight = 100,
-      _font_scale = 100,
-      _text_shadow = false,
-      _bind = false,
-      _img_width = "100%",
-      _upperCase = false;
+      _autoColor = false;
+      //_font_weight = 100,
+      //_font_scale = 100,
+      //_text_shadow = false,
+      //_bind = false,
+      //_img_width = "100%",
+      //_upperCase = false;
 
 
     // -----------------------------
@@ -44,9 +44,9 @@ class StringAvatar extends React.Component {
         ctx,
         font_size;
 
-      console.log("w:", w);
-      console.log("h:", h);
-      console.log("text:", text);
+      //console.log("w:", w);
+      //console.log("h:", h);
+      //console.log("text:", text);
 
       if (w != undefined && w > 0) {
         if (h != undefined && h > 0) {
@@ -66,7 +66,7 @@ class StringAvatar extends React.Component {
 
       font_size = WIDTH / (2 / (props.fontScale / 100));
 
-      console.log("font_size:", font_size);
+      //console.log("font_size:", font_size);
 
       ctx.font = props.fontWeight + " " + font_size + "px sans-serif";
 
@@ -87,7 +87,7 @@ class StringAvatar extends React.Component {
 
     function getInitialsFromString(str) {
 
-      console.log("str:", str);
+      //console.log("str:", str);
 
       if (!str) return ""
 
@@ -105,7 +105,7 @@ class StringAvatar extends React.Component {
     // checkValues
     // -----------------------------
 
-    console.log("this.props:", this.props);
+    //console.log("this.props:", this.props);
 
     // Create text to be shown
 
@@ -165,26 +165,26 @@ class StringAvatar extends React.Component {
     var _defaultWrapperStyling = { overflow: 'hidden', width: this.props.width +"px", height: this.props.width +"px", boxSizing: "unset" };
 
     if (this.props.roundShape != undefined) {
-      console.log("1");
+      //console.log("1");
       _roundShape = this.props.roundShape;
       if (_roundShape) {
-        console.log("2");
+        //console.log("2");
         _defaultWrapperStyling.borderRadius = this.props.width +"px";
       }
     } else {
-      console.log("3");
+      //console.log("3");
       if (this.props.cornerRadius != undefined) {
-        console.log("4");
+        //console.log("4");
         _corner_radius = this.props.cornerRadius;
         _defaultWrapperStyling.borderRadius = _corner_radius +"px";
       }
     }
     
-    console.log(">> this.props.wrapperStyle:", this.props.wrapperStyle );
-    console.log(">> _defaultWrapperStyling:", _defaultWrapperStyling );
+    //console.log(">> this.props.wrapperStyle:", this.props.wrapperStyle );
+    //console.log(">> _defaultWrapperStyling:", _defaultWrapperStyling );
 
     _defaultWrapperStyling = Object.assign({}, this.props.wrapperStyle, _defaultWrapperStyling );
-    console.log(">> _defaultWrapperStyling B:", _defaultWrapperStyling );
+    //console.log(">> _defaultWrapperStyling B:", _defaultWrapperStyling );
     
     
 
