@@ -1,6 +1,10 @@
-# react-string-avatar
+# react-string-avatar [![Build Status](https://travis-ci.org/ajsoriar/angular-avatar.svg?branch=master)](https://travis-ci.org/ajsoriar/react-string-avatar)
 
-React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.
+[![npm version](https://badge.fury.io/js/react-string-avatar.svg)](https://badge.fury.io/js/react-string-avatar)
+[![Bower version](https://badge.fury.io/bo/react-string-avatar.svg)](https://badge.fury.io/bo/react-string-avatar)
+[![NuGet version](https://badge.fury.io/nu/react-string-avatar.svg)](https://badge.fury.io/nu/react-string-avatar)
+
+React String Avatar is an ES6 module/component for React that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.
 
 ![react-string-avatar auto-color feature examples](./demo/react-string-avatar-autocolor-example.png?raw=true "react-string-avatar auto-color feature examples")
 
@@ -14,6 +18,7 @@ npm install react-string-avatar --save
 
 - Yarn: **yarn add react-string-avatar**
 - NPM: **npm install react-string-avatar**
+- NuGet: **PM> Install-Package react-string-avatar**
 - github: **https://github.com/ajsoriar/react-string-avatar**
 
 ### 2 Import Custom Element
@@ -25,8 +30,10 @@ import Avatar from 'react-string-avatar';
 ### 3 Start using it'!'
 
 ```javascript
-<Avatar string="Foo Bar" />
+<Avatar initials="A"></Avatar>
 ```
+You will get this:
+![react-string-avatar basic usage example](./demo/react-string-avatar-basic-example.png?raw=true "react-string-avatar basic usage example")
 
 #### 3.1 Auto-color feature:
 
@@ -51,7 +58,12 @@ import Avatar from 'react-string-avatar';
 <Avatar initials="jpg" pictureFormat="jpeg" bgColor="red" textColor="yellow" width={64} cornerRadius={5} ></Avatar>
 <Avatar initials="png" pictureFormat="png" bgColor="purple" textColor="yellow" width={64} cornerRadius={5} ></Avatar>
 ```
-        
+You will get this:
+
+![More reacr-string-avatar basic usage examples](./demo/react-string-avatar-examples.png?raw=true "More reacr-string-avatar basic usage examples")
+
+Run the live example in plunker: http://plnkr.co/edit/TfCxUn?p=preview
+
 ### 4 License
 
 MIT
