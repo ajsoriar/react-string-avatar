@@ -5,7 +5,7 @@ class StringAvatar extends React.Component {
   // static displayName = 'StringAvatar';
 
   _renderImage() {
-    var _long = 45,
+    let _long = 45,
       // _picture_resolution = 256,
       // _wrapper = true,
       _str = '', // scope.initials || "",
@@ -73,7 +73,7 @@ class StringAvatar extends React.Component {
       }
 
       canvas = document.createElement('canvas');
-      canvas.id = `ngAvatar-${  Date.now()}`;
+      canvas.id = `ngAvatar-${Date.now()}`;
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
 
@@ -99,7 +99,7 @@ class StringAvatar extends React.Component {
       // ctx.fillText(_text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (_default.font_size / 3) + 5 );
       ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + font_size / 3);
 
-      return canvas.toDataURL(`image/${  props.pictureFormat}`);
+      return canvas.toDataURL(`image/${props.pictureFormat}`);
     }
 
     function getInitialsFromString(str) {
@@ -140,7 +140,7 @@ class StringAvatar extends React.Component {
     } else if (this.props.autoColor != undefined) {
       _autoColor = this.props.autoColor;
       if (_autoColor === true) {
-        var i,
+        let i,
           lon = _str.length,
           charIndex = 0,
           colorIndex;
@@ -167,21 +167,24 @@ class StringAvatar extends React.Component {
     // Create HTML and styles wraping the image
     // ------------------------------------------
 
-    var _img_styling = {
+    // let
+    _img_styling = {
       imageRendering: 'pixelated',
       imageRendering: '-moz-crisp-edges'
     };
 
-    var _pixelated = this.props.pixelated;
+    // let
+    _pixelated = this.props.pixelated;
     if (_pixelated === true) {
       _img_styling.imageRendering = 'pixelated';
       // _img_styling.imageRendering = "-moz-crisp-edges";
     }
 
-    var _defaultWrapperStyling = {
+    // let
+    _defaultWrapperStyling = {
       overflow: 'hidden',
-      width: `${this.props.width  }px`,
-      height: `${this.props.width  }px`,
+      width: `${this.props.width}px`,
+      height: `${this.props.width}px`,
       boxSizing: 'unset'
     };
 
@@ -218,6 +221,7 @@ class StringAvatar extends React.Component {
         style={_img_styling}
         width={this.props.width}
         height=""
+        alt="react-string-avatar"
       />
     );
 
@@ -229,6 +233,7 @@ class StringAvatar extends React.Component {
         </div>
       );
     }
+
     return imgHtml;
   } // this.props.renderImage ends here.
 
@@ -249,10 +254,10 @@ StringAvatar.propTypes = {
   roundShape: PropTypes.bool,
   defaultWrapperStyling: PropTypes.object,
   wrapperStyle: PropTypes.object,
-  // class: PropTypes.string, //*
-  // imgClass: PropTypes.string, //*
+  // class: PropTypes.string,
+  // imgClass: PropTypes.string,
 
-  string: PropTypes.string, //* 
+  string: PropTypes.string,
   cornerRadius: PropTypes.number,
   pictureFormat: PropTypes.string,
   colorsPalette: PropTypes.array,
@@ -261,7 +266,7 @@ StringAvatar.propTypes = {
   fontScale: PropTypes.number,
   textShadow: PropTypes.bool,
   bind: PropTypes.bool,
-  // maxLength: PropTypes.string, //*
+  // maxLength: PropTypes.string,
   upperCase: PropTypes.bool
 };
 
