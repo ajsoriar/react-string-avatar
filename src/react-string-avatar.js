@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class StringAvatar extends React.Component {
-  // static displayName = 'StringAvatar';
-
   _renderImage() {
-    let _long = 45,
-      // _picture_resolution = 256,
-      // _wrapper = true,
-      _str = '', // scope.initials || "",
+    // let // _long = 45,
+    // _picture_resolution = 256,
+    // _wrapper = true,
+    let _str = '',
       _bgColor = '#000',
       // _textColor = "#fff",
       _pixelated = false,
@@ -195,30 +193,28 @@ class StringAvatar extends React.Component {
         // console.log("2");
         _defaultWrapperStyling.borderRadius = `${this.props.width}px`;
       }
-    } else {
-      // console.log("3");
-      if (this.props.cornerRadius != undefined) {
-        // console.log("4");
-        _corner_radius = this.props.cornerRadius;
-        _defaultWrapperStyling.borderRadius = `${_corner_radius}px`;
-      }
+    } else if (this.props.cornerRadius != undefined) {
+      // console.log("4");
+      _corner_radius = this.props.cornerRadius;
+      _defaultWrapperStyling.borderRadius = `${_corner_radius}px`;
     }
-
-    // console.log(">> this.props.wrapperStyle:", this.props.wrapperStyle );
-    // console.log(">> _defaultWrapperStyling:", _defaultWrapperStyling );
 
     _defaultWrapperStyling = Object.assign(
       {},
       this.props.wrapperStyle,
       _defaultWrapperStyling
     );
-    // console.log(">> _defaultWrapperStyling B:", _defaultWrapperStyling );
 
-    // var imgHtml = '<img src={imgData} style={_img_styling} width={this.props.width} height="" />';
-    const imgHtml = (
+    const _defaultImageStyling = Object.assign(
+      {},
+      this.props.imgStyle,
+      _img_styling
+    );
+
+    const imgHtml = () => (
       <img
         src={imgData}
-        style={_img_styling}
+        style={_defaultImageStyling}
         width={this.props.width}
         height=""
         alt="react-string-avatar"
@@ -229,12 +225,12 @@ class StringAvatar extends React.Component {
       // return '<div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>';
       return (
         <div className="avatar-wrapper " style={_defaultWrapperStyling}>
-          {imgHtml}
+          {imgHtml()}
         </div>
       );
     }
 
-    return imgHtml;
+    return imgHtml();
   } // this.props.renderImage ends here.
 
   render() {
@@ -267,7 +263,8 @@ StringAvatar.propTypes = {
   textShadow: PropTypes.bool,
   bind: PropTypes.bool,
   // maxLength: PropTypes.string,
-  upperCase: PropTypes.bool
+  upperCase: PropTypes.bool,
+  imgStyle: PropTypes.object
 };
 
 StringAvatar.defaultProps = {
@@ -320,7 +317,8 @@ StringAvatar.defaultProps = {
   textShadow: false,
   bind: false,
   // imgWidth: "100%",
-  upperCase: false
+  upperCase: false,
+  imgStyle: {}
 };
 
 export default StringAvatar;
