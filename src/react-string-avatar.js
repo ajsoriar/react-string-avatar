@@ -2,6 +2,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class StringAvatar extends React.Component {
+  generateAvatar(text, w, h, bgColor, bgImage, props) {
+    let WIDTH = 256,
+      HEIGHT = 256,
+      canvas,
+      ctx,
+      font_size;
+
+    if (w !== undefined && w > 0) {
+      if (h !== undefined && h > 0) {
+        WIDTH = w;
+        HEIGHT = h;
+      }
+    }
+
+    canvas = document.createElement('canvas');
+    canvas.id = `ngAvatar-${Date.now()}`;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    ctx = canvas.getContext('2d');
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+    font_size = WIDTH / (2 / (props.fontScale / 100));
+    ctx.font = `${props.fontWeight} ${font_size}px sans-serif`;
+
+    if (props.textShadow === true) {
+      ctx.shadowColor = 'black';
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 5;
+    }
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = props.textColor;
+    // ctx.fillText(_text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (_default.font_size / 3) + 5 );
+    ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + font_size / 3);
+
+    return canvas.toDataURL(`image/${props.pictureFormat}`);
+  }
+
+  getInitialsFromString(str) {
+    if (!str) return '';
+    str = str.split(' ');
+    let output = '',
+      i = 0,
+      len = str.length;
+    for (i; i < len; i += 1) if (str[i] !== '') output += str[i][0]; // .toUpperCase();
+    return output;
+  }
   _renderImage() {
     // let // _long = 45,
     // _picture_resolution = 256,
@@ -41,85 +90,6 @@ class StringAvatar extends React.Component {
         '#005bab'
       ],
       _autoColor = false;
-    // _font_weight = 100,
-    // _font_scale = 100,
-    // _text_shadow = false,
-    // _bind = false,
-    // _img_width = "100%",
-    // _upperCase = false;
-
-    // -----------------------------
-    // utility functions
-    // -----------------------------
-
-    function generateAvatar(text, w, h, bgColor, bgImage, props) {
-      let WIDTH = 256,
-        HEIGHT = 256,
-        canvas,
-        ctx,
-        font_size;
-
-      // console.log("w:", w);
-      // console.log("h:", h);
-      // console.log("text:", text);
-
-      if (w != undefined && w > 0) {
-        if (h != undefined && h > 0) {
-          WIDTH = w;
-          HEIGHT = h;
-        }
-      }
-
-      canvas = document.createElement('canvas');
-      canvas.id = `ngAvatar-${Date.now()}`;
-      canvas.width = WIDTH;
-      canvas.height = HEIGHT;
-
-      ctx = canvas.getContext('2d');
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      font_size = WIDTH / (2 / (props.fontScale / 100));
-
-      // console.log("font_size:", font_size);
-
-      ctx.font = `${props.fontWeight} ${font_size}px sans-serif`;
-
-      if (props.textShadow === true) {
-        ctx.shadowColor = 'black';
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-        ctx.shadowBlur = 5;
-      }
-
-      ctx.textAlign = 'center';
-      ctx.fillStyle = props.textColor;
-      // ctx.fillText(_text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (_default.font_size / 3) + 5 );
-      ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + font_size / 3);
-
-      return canvas.toDataURL(`image/${props.pictureFormat}`);
-    }
-
-    function getInitialsFromString(str) {
-      // console.log("str:", str);
-
-      if (!str) return '';
-
-      var output = '',
-        i = 0,
-        str = str.split(' '),
-        len = str.length;
-
-      for (i; i < len; i++) if (str[i] != '') output += str[i][0]; // .toUpperCase();
-
-      return output;
-    }
-
-    // -----------------------------
-    // checkValues
-    // -----------------------------
-
-    // console.log("this.props:", this.props);
 
     // Create text to be shown
 
@@ -128,7 +98,7 @@ class StringAvatar extends React.Component {
     }
 
     if (this.props.string != undefined) {
-      _str = getInitialsFromString(this.props.string);
+      _str = this.getInitialsFromString(this.props.string);
     }
 
     // Calculate color
@@ -142,7 +112,7 @@ class StringAvatar extends React.Component {
           lon = _str.length,
           charIndex = 0,
           colorIndex;
-        for (i = 0; i < lon; i++) charIndex = _str.charCodeAt(i);
+        for (i = 0; i < lon; i += 1) charIndex = _str.charCodeAt(i);
         colorIndex = charIndex % _colors_palette.length;
         _bgColor = _colors_palette[colorIndex];
       }
@@ -152,7 +122,7 @@ class StringAvatar extends React.Component {
     // Create the image here
     // --------------------------
 
-    const imgData = generateAvatar(
+    const imgData = this.generateAvatar(
       _str,
       this.props.pictureResolution,
       this.props.pictureResolution,
