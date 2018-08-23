@@ -165,20 +165,17 @@ class StringAvatar extends React.Component {
     // Create HTML and styles wraping the image
     // ------------------------------------------
 
-    // let
     _img_styling = {
       imageRendering: 'pixelated',
       imageRendering: '-moz-crisp-edges'
     };
 
-    // let
     _pixelated = this.props.pixelated;
     if (_pixelated === true) {
       _img_styling.imageRendering = 'pixelated';
       // _img_styling.imageRendering = "-moz-crisp-edges";
     }
 
-    // let
     _defaultWrapperStyling = {
       overflow: 'hidden',
       width: `${this.props.width}px`,
@@ -186,17 +183,16 @@ class StringAvatar extends React.Component {
       boxSizing: 'unset'
     };
 
-    if (this.props.roundShape != undefined) {
-      // console.log("1");
+    if (this.props.roundShape !== undefined) {
       _roundShape = this.props.roundShape;
       if (_roundShape) {
-        // console.log("2");
         _defaultWrapperStyling.borderRadius = `${this.props.width}px`;
+        _img_styling.borderRadius = `${this.props.width}px`;
       }
-    } else if (this.props.cornerRadius != undefined) {
-      // console.log("4");
+    } else if (this.props.cornerRadius !== undefined) {
       _corner_radius = this.props.cornerRadius;
       _defaultWrapperStyling.borderRadius = `${_corner_radius}px`;
+      _img_styling.borderRadius = `${_corner_radius}px`;
     }
 
     _defaultWrapperStyling = Object.assign(
@@ -222,7 +218,6 @@ class StringAvatar extends React.Component {
     );
 
     if (this.props.wrapper) {
-      // return '<div className="avatar-wrapper " style={_defaultWrapperStyling} >{imgHtml}</div>';
       return (
         <div className="avatar-wrapper " style={_defaultWrapperStyling}>
           {imgHtml()}
@@ -231,7 +226,7 @@ class StringAvatar extends React.Component {
     }
 
     return imgHtml();
-  } // this.props.renderImage ends here.
+  } // _renderImage ends here.
 
   render() {
     return this._renderImage();
