@@ -1,68 +1,48 @@
-/*
-    ./webpack.config.js
-*/
-
-/*
 const path = require('path');
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+
+const libraryName = 'library';
+const outputFile = `${libraryName}.js`;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const config = {
+  // entry: './src/react-string-avatar.js',
+  entry: {
+    'react-string-avatar': './src/react-string-avatar.js',
+    'react-string-avatar.min': './src/react-string-avatar.js'
   },
+  output: {
+    filename: outputFile, // 'main.js',
+    path: path.resolve(__dirname, 'lib'),
+    // filename: 'react-string-avatar.js',
+    filename: '[name].js',
+    library: ''
+    // libraryTarget: 'var'
+    // libraryTarget: 'commonJS'
+    /*
+    libraryTarget: 'umd',
+    umdNamedDefine: true
+    */
+  },
+  externals: ['react', 'prop-types'], // This line is key! or React will be included in the bundle!!!
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /\.min\.js$/
+      })
     ]
   }
-}
-*/
-
-/* 
-    ./webpack.config.js
-*/
-const path = require('path');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
-
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve('dist'),
-    filename: 'index_bundle.js'
-  },
-  module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
-    ]
-  },
-
-  plugins: [HtmlWebpackPluginConfig]
 };
 
-/*
-
-
-
-module.exports = {
-
-...
-
-module: {
-    loaders: [
-        ...
-    ]
-},
-// add this line
-plugins: [HtmlWebpackPluginConfig]
-}
-
-*/
+module.exports = config;
