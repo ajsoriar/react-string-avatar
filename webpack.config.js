@@ -23,7 +23,7 @@ const config = {
     umdNamedDefine: true
     */
   },
-  externals: ['react', 'prop-types'], // This line is key! or React will be included in the bundle!!!
+  // externals: ['react', 'prop-types'], // This line is key! or React will be included in the bundle!!!
   module: {
     rules: [
       {
