@@ -1,57 +1,63 @@
 {
-    "name": "react-string-avatar",
-    "version": "1.0.2",
-    "description": "React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.",
-    "main": "lib/react-string-avatar.min.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ajsoriar/react-string-avatar.git"
-    },
-    "keywords": [
-        "avatar",
-        "react-string-avatar",
-        "react string avatar",
-        "react-avatar",
-        "react avatar",
-        "string-avatar",
-        "string avatar",
-        "js-avatar",
-        "js avatar"
-    ],
-    "author": "asr <ajsoriar@gmail.com>",
-    "license": "MIT",
-    "dependencies": {},
-    "peerDependencies": {
-        "react": "^16.4.2",
-        "react-dom": "^16.4.2"
-    },
-    "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.5",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "eslint": "^6.8.0",
-        "eslint-config-airbnb": "^18.0.1",
-        "eslint-config-prettier": "^6.7.0",
-        "eslint-plugin-import": "^2.19.1",
-        "eslint-plugin-jsx-a11y": "^6.2.3",
-        "eslint-plugin-prettier": "^3.1.2",
-        "eslint-plugin-react": "^7.17.0",
-        "eslint-plugin-react-hooks": "^2.3.0",
-        "html-webpack-plugin": "^3.2.0",
-        "prettier": "^1.19.1",
-        "prop-types": "^15.6.2",
-        "react": "^16.4.2",
-        "react-dom": "^16.4.2",
-        "webpack": "^4.16.5",
-        "webpack-cli": "^3.1.0"
-    },
-    "scripts": {
-        "dev": "webpack --mode development",
-        "build": "webpack --mode production"
-    },
-    "bugs": {
-        "url": "https://github.com/ajsoriar/react-string-avatar/issues"
-    },
-    "homepage": "https://github.com/ajsoriar/react-string-avatar#readme"
+  "name": "react-string-avatar",
+  "version": "1.0.2",
+  "description": "React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.",
+  "main": "lib/react-string-avatar.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajsoriar/react-string-avatar.git"
+  },
+  "keywords": [
+    "avatar",
+    "react-string-avatar",
+    "react string avatar",
+    "react-avatar",
+    "react avatar",
+    "string-avatar",
+    "string avatar",
+    "js-avatar",
+    "js avatar"
+  ],
+  "author": "asr <ajsoriar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.19.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "bugs": {
+    "url": "https://github.com/ajsoriar/react-string-avatar/issues"
+  },
+  "homepage": "https://github.com/ajsoriar/react-string-avatar#readme"
 }
