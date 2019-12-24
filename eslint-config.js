@@ -39,7 +39,8 @@ module.exports = {
         document: true
     },
 
-    plugins: [ // ESLint supports the use of third-party plugins. Before using the plugin you have to install it using npm.
+    plugins: [
+        // ESLint supports the use of third-party plugins. Before using the plugin you have to install it using npm.
         'react', // The eslint-plugin- prefix can be omitted from the plugin name.
         'prettier'
     ],
@@ -71,17 +72,20 @@ module.exports = {
 
         // * Comments *
 
-        'lines-around-comment': ['error', {
-            beforeBlockComment: true
-        }],
-        'multiline-comment-style': ['error', 'separate-lines'],
-        'capitalized-comments': [
+        'lines-around-comment': [
             'error',
-            'always',
             {
-                ignoreConsecutiveComments: true
+                beforeBlockComment: true
             }
         ],
+        'multiline-comment-style': ['error', 'separate-lines'],
+        // 'capitalized-comments': [
+        //     'error',
+        //     'always',
+        //     {
+        //         ignoreConsecutiveComments: true
+        //     }
+        // ],
 
         // * eslint-plugin-react *
 
@@ -115,7 +119,6 @@ module.exports = {
 
                 // https://prettier.io/docs/en/rationale.html#semicolons
                 // https://standardjs.com/rules.html#semicolons
-
 
                 // - Trailing Commas -
 
