@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class StringAvatar extends React.Component {
   generateAvatar(text, w, h, bgColor, bgImage, props) {
@@ -202,88 +201,5 @@ class StringAvatar extends React.Component {
     return this._renderImage();
   }
 }
-
-StringAvatar.propTypes = {
-  initials: PropTypes.string,
-  // width: PropTypes.string,
-  wrapper: PropTypes.bool,
-  bgColor: PropTypes.string,
-  textColor: PropTypes.string,
-  pictureResolution: PropTypes.number,
-  width: PropTypes.number,
-  pixelated: PropTypes.bool,
-  roundShape: PropTypes.bool,
-  defaultWrapperStyling: PropTypes.object,
-  wrapperStyle: PropTypes.object,
-  // class: PropTypes.string,
-  // imgClass: PropTypes.string,
-
-  string: PropTypes.string,
-  cornerRadius: PropTypes.number,
-  pictureFormat: PropTypes.string,
-  colorsPalette: PropTypes.array,
-  autoColor: PropTypes.bool,
-  fontWeight: PropTypes.number,
-  fontScale: PropTypes.number,
-  textShadow: PropTypes.bool,
-  bind: PropTypes.bool,
-  // maxLength: PropTypes.string,
-  upperCase: PropTypes.bool,
-  imgStyle: PropTypes.object
-};
-
-StringAvatar.defaultProps = {
-  initials: null,
-  wrapper: true,
-  bgColor: '#000',
-  textColor: '#fff',
-  pictureResolution: 256, // 256,
-  width: 45,
-  pixelated: false,
-  // imgStyling: "vertical-align:top;",
-  roundShape: false,
-  defaultWrapperStyling: {
-    borderRadius: 0,
-    display: 'block',
-    overflow: 'hidden'
-  },
-  wrapperStyle: {},
-  // extraClasses: "",
-  // extraImgClasses: "",
-  // extraStyles: "",
-
-  string: null,
-  cornerRadius: 0,
-  pictureFormat: 'png',
-  colorsPalette: [
-    '#bdc3c7',
-    '#6f7b87',
-    '#2c3e50',
-    '#2f3193',
-    '#662d91',
-    '#922790',
-    '#ec2176',
-    '#ed1c24',
-    '#f36622',
-    '#f8941e',
-    '#fab70f',
-    '#fdde00',
-    '#d1d219',
-    '#8ec73f',
-    '#00a650',
-    '#00aa9c',
-    '#00adef',
-    '#0081cd',
-    '#005bab'
-  ],
-  autoColor: false,
-  fontWeight: 100,
-  fontScale: 100,
-  textShadow: false,
-  bind: false,
-  // imgWidth: "100%",
-  upperCase: false,
-  imgStyle: {}
-};
 
 export default StringAvatar;

@@ -21,8 +21,7 @@
   "author": "asr <ajsoriar@gmail.com>",
   "license": "MIT",
   "dependencies": {},
-  "peerDependencies": {      
-    "prop-types": "^15.6.2",
+  "peerDependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
