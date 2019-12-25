@@ -169,12 +169,12 @@ class StringAvatar extends Component {
         }
 
         defaultWrapperStyling = {
-            this.props.wrapperStyle,
+            //this.props.wrapperStyle,
             defaultWrapperStyling
         };
 
         const defaultImageStyling = {
-            this.props.imgStyle,
+            //this.props.imgStyle,
             imgstyling
         };
 
@@ -208,7 +208,9 @@ class StringAvatar extends Component {
 
     }
 
-    render = () => this.renderImage();
+    render () { 
+        return this.renderImage(); 
+    }
 }
 
 export default StringAvatar;

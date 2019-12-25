@@ -57,7 +57,7 @@ module.exports = {
         }
     },
     rules: {
-        indent: 0,
+        indent: 4, // https://eslint.org/docs/2.0.0/rules/indent
         curly: ['error', 'all'], // Force the use of { and } everywhere
         'import/prefer-default-export': 0, // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
         'no-alert': 'error',

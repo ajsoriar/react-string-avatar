@@ -54,7 +54,9 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
   },
   "bugs": {
     "url": "https://github.com/ajsoriar/react-string-avatar/issues"
