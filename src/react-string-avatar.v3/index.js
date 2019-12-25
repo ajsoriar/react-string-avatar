@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AvatarUtils from './../avatarUtils';
 
 export default class Avatar extends Component {
     constructor() {
@@ -40,76 +41,6 @@ export default class Avatar extends Component {
             ],
             autoColor: false
         };
-    }
-
-    getInitialsFromString(str) {
-
-        console.log( "2 - getInitialsFromString() str:", str );
-
-        if (!str) {
-            return '';
-        }
-        str = str.split(' ');
-        let output = '';
-        let i = 0;
-        const len = str.length;
-
-        for (i; i < len; i += 1) {
-            if (str[i] !== '') {
-                output += str[i][0];
-            }
-        }
-        return output;
-    }
-
-    generateAvatar(text, w, h, bgColor, props) {
-
-        console.log( "3 - generateAvatar() text:", text );
-
-        let WIDTH = 256;
-        let HEIGHT = 256;
-        let canvas = null;
-        let ctx = null;
-        let fontsize = null;
-
-        if (w !== undefined && w > 0) {
-            if (h !== undefined && h > 0) {
-                WIDTH = w;
-                HEIGHT = h;
-            }
-        }
-
-        canvas = document.createElement('canvas');
-        canvas.id = `ngAvatar-${Date.now()}`;
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
-
-        ctx = canvas.getContext('2d');
-        ctx.fillStyle = this.state.bgColor;
-        ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-        // - 1 -
-        //fontsize = WIDTH / (2 / (props.fontScale / 100));
-        //ctx.font = `${props.fontWeight} ${fontsize}px sans-serif`;
-
-        // var fontScale = 1;
-        // fontsize = WIDTH / (2 / (fontScale / 100));
-        // var fontWeight = '100px';
-        // ctx.font = `${fontWeight} ${fontsize}px sans-serif`;
-
-        if (props.textShadow === true) {
-            ctx.shadowColor = 'black';
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-            ctx.shadowBlur = 5;
-        }
-
-        ctx.textAlign = 'center';
-        ctx.fillStyle = props.textColor;
-        // ctx.fillText(text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (default.fontsize / 3) + 5 );
-        ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + fontsize / 3);
-
-        return canvas.toDataURL(`image/${props.pictureFormat}`);
     }
 
     renderImage() {
@@ -163,7 +94,7 @@ export default class Avatar extends Component {
         // Create the image here
         // --------------------------
 
-        const imgData = this.generateAvatar(
+        const imgData = AvatarUtils.generateAvatarImage(
             initials,
             pictureResolution,
             pictureResolution,
@@ -209,19 +140,21 @@ export default class Avatar extends Component {
         // defaultWrapperStyling
         // };
         
-        var stringStyle = {'width': 60+'px', 'height': 60+'px'};
+        var stringImageStyles = {'width': 60+'px', 'height': 60+'px'}; // AvatarUtils.getStringImageStyles ( props );
+
+        var stringWrapperStyles = stringImageStyles; // AvatarUtils.getStringWrapperStyles ( props );
 
         // const Example = ({ data }) => <img alt="LOL" src={`data:image/jpeg;base64,${data}`} />
         const Example = ({ data, style }) => <img alt="LOL" src={`${data}`} style={style} />;
 
         if (wrapper) {
             return (
-                <div className="avatar-wrapper " style={stringStyle}>
-                    <Example data={imgData} style={stringStyle}/>
+                <div className="avatar-wrapper " style={stringImageStyles}>
+                    <Example data={imgData} style={stringImageStyles}/>
                 </div>
             );
         } else {
-            return <Example data={imgData} style={stringStyle} />; // imgHtml();
+            return <Example data={imgData} style={stringImageStyles} />; // imgHtml();
         }
 
     } // renderImage ends here.
@@ -267,16 +200,15 @@ export default class Avatar extends Component {
         }
 
         if (string !== undefined) {
-            resultString = this.getInitialsFromString(string);
+            resultString = AvatarUtils.getInitialsFromString(string);
         }
 
         this.setState({
             str: resultString
         })
-
     }
 
-    render () {
+    render (state, props) {
         return this.renderImage();
     }
 
