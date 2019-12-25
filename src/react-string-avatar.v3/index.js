@@ -44,7 +44,7 @@ export default class Avatar extends Component {
 
     getInitialsFromString(str) {
 
-        console.log( "str:", str );
+        console.log( "2 - getInitialsFromString() str:", str );
 
         if (!str) {
             return '';
@@ -63,6 +63,9 @@ export default class Avatar extends Component {
     }
 
     generateAvatar(text, w, h, bgColor, props) {
+
+        console.log( "3 - generateAvatar() text:", text );
+
         let WIDTH = 256;
         let HEIGHT = 256;
         let canvas = null;
@@ -84,8 +87,15 @@ export default class Avatar extends Component {
         ctx = canvas.getContext('2d');
         ctx.fillStyle = this.state.bgColor;
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
-        fontsize = WIDTH / (2 / (props.fontScale / 100));
-        ctx.font = `${props.fontWeight} ${fontsize}px sans-serif`;
+
+        // - 1 -
+        //fontsize = WIDTH / (2 / (props.fontScale / 100));
+        //ctx.font = `${props.fontWeight} ${fontsize}px sans-serif`;
+
+        // var fontScale = 1;
+        // fontsize = WIDTH / (2 / (fontScale / 100));
+        // var fontWeight = '100px';
+        // ctx.font = `${fontWeight} ${fontsize}px sans-serif`;
 
         if (props.textShadow === true) {
             ctx.shadowColor = 'black';
@@ -127,18 +137,10 @@ export default class Avatar extends Component {
             upperCase,
             imgStyle
         } = this.props;
+        
+        console.log("1 - this.props.initials:", this.props.initials );
 
-        // create text to be shown
-
-        if (initials !== undefined) {
-            this.state.str = initials;
-        }
-
-        if (string !== undefined) {
-            this.state.str = this.getInitialsFromString(string);
-        }
-
-        // calculate color
+        // Calculate color
 
         if (bgColor !== undefined) {
             this.state.bgColor = bgColor;
@@ -162,7 +164,7 @@ export default class Avatar extends Component {
         // --------------------------
 
         const imgData = this.generateAvatar(
-            this.state.str,
+            initials,
             pictureResolution,
             pictureResolution,
             this.state.bgColor,
@@ -228,7 +230,49 @@ export default class Avatar extends Component {
 
     }
 
-    componentDidUpdate () {
+    componentDidUpdate (props) {
+
+        let {
+            initials,
+            wrapper,
+            bgColor,
+            textColor,
+            pictureResolution,
+            width,
+            pixelated,
+            roundShape,
+            //defaultWrapperStyling,
+            wrapperStyle,
+            string,
+            cornerRadius,
+            pictureFormat,
+            colorsPalette,
+            autoColor,
+            fontWeight,
+            fontScale,
+            textShadow,
+            bind,
+            upperCase,
+            imgStyle
+        } = props;
+        
+        console.log("componentDidUpdate() this.props.initials:", initials );
+
+        var resultString = '';
+
+        // Create text to be shown
+
+        if (initials !== undefined) {
+            resultString = initials;
+        }
+
+        if (string !== undefined) {
+            resultString = this.getInitialsFromString(string);
+        }
+
+        this.setState({
+            str: resultString
+        })
 
     }
 
