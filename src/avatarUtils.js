@@ -74,10 +74,63 @@ const AvatarUtils = {
 
     getStringImageStyles: ( props ) => {
 
+        var resultObj = {};
+        var _width;
+
+        console.log("[getStringImageStyles] props: ", props );
+
+        // 1 - width and height
+
+        if ( !props.width ) {
+            _width = 45;
+        } else {
+            _width = props.width;
+        }
+
+        resultObj.width = _width+'px';
+        resultObj.height = _width+'px';
+
+        // 2 - round shape
+
+        if ( props.roundShape ) {
+            resultObj.borderRadius = _width+'px';
+        } else if ( props.cornerRadius ) {
+            resultObj.borderRadius = props.cornerRadius+'px';
+        }
+        
+        return resultObj;
     },
 
     getStringWrapperStyles: ( props ) => {
+        var resultObj = {};
+        var _width;
 
+        console.log("[getStringImageStyles] props: ", props );
+
+        // 1 - width and height
+
+        if ( !props.width ) {
+            _width = 45;
+        } else {
+            _width = props.width;
+        }
+
+        resultObj.width = _width+'px';
+        resultObj.height = _width+'px';
+
+        // 2 - round shape
+
+        if ( props.roundShape ) {
+            resultObj.borderRadius = _width+'px';
+        } else if ( props.cornerRadius ) {
+            resultObj.borderRadius = props.cornerRadius+'px';
+        }
+
+        // n - extra
+
+        resultObj.display = 'inline-block';
+        
+        return resultObj;
     }
 };
 

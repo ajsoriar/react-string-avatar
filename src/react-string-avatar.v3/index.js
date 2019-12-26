@@ -134,22 +134,16 @@ export default class Avatar extends Component {
             imgStyling.borderRadius = `${cornerradius}px`;
         }
 
-        // defaultWrapperStyling = {
-        
-        // wrapperStyle,
-        // defaultWrapperStyling
-        // };
-        
-        var stringImageStyles = {'width': 60+'px', 'height': 60+'px'}; // AvatarUtils.getStringImageStyles ( props );
+        var stringImageStyles = AvatarUtils.getStringImageStyles( this.props );
 
-        var stringWrapperStyles = stringImageStyles; // AvatarUtils.getStringWrapperStyles ( props );
+        var stringWrapperStyles = AvatarUtils.getStringWrapperStyles ( this.props );
 
         // const Example = ({ data }) => <img alt="LOL" src={`data:image/jpeg;base64,${data}`} />
         const Example = ({ data, style }) => <img alt="LOL" src={`${data}`} style={style} />;
 
         if (wrapper) {
             return (
-                <div className="avatar-wrapper " style={stringImageStyles}>
+                <div className="avatar-wrapper " style={stringWrapperStyles}>
                     <Example data={imgData} style={stringImageStyles}/>
                 </div>
             );

@@ -34,9 +34,13 @@ import Avatar3 from './../src/react-string-avatar.v3';
 
 export const myAvatar3 = () => (
     <div>
-        <Avatar3 string="AS"></Avatar3>
+        <div>
+          <img src="https://raw.githubusercontent.com/ajsoriar/angular-avatar/master/demo/angular-avatar-examples.png"></img>
+        </div>
+        {/* <Avatar3 string="AS"></Avatar3> */}
         <Avatar3 initials="A" />
         <Avatar3 initials="AS" bgColor="#00FF00" />
+        <Avatar3 initials="AJS" bgColor="cyan" textColor="blue" roundShape="true" ></Avatar3>
         <Avatar3 initials="AJ" bgColor="red" textColor="yellow" pictureResolution={512} width={64} />
         <Avatar3 initials="AJ" bgColor="yellow" textColor="green" pictureResolution={1024} width={32} />
         <Avatar3 initials="AS" bgColor="lightgreen" textColor="red" pictureResolution={16} width={128} pixelated={false} />
