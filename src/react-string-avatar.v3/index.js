@@ -63,7 +63,7 @@ export default class Avatar extends Component {
         // --------------------------
 
         const imgData = AvatarUtils.generateAvatarImage(
-            initials,
+            this.props.string ? AvatarUtils.getInitialsFromString( this.props.string ).toLocaleUpperCase() : initials, // TODO: .toLocaleUpperCase() forceUpperCase = {true};
             pictureResolution,
             pictureResolution,
             bgColor,
