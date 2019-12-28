@@ -78,8 +78,8 @@ export default class Avatar extends Component {
 
         var stringWrapperStyles = AvatarUtils.getStringWrapperStyles ( this.props );
 
-        // const Example = ({ data }) => <img alt="LOL" src={`data:image/jpeg;base64,${data}`} />
-        const Example = ({ data, style }) => <img alt="LOL" src={`${data}`} style={style} />;
+        // const Example = ({ data }) => <img alt="Avatar image" src={`data:image/jpeg;base64,${data}`} />
+        const Example = ({ data, style }) => <img alt="Avatar image" src={`${data}`} style={style} />;
 
         if (wrapper) {
             return (
