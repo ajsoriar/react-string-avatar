@@ -24,23 +24,46 @@ const AvatarUtils = {
 
     generateAvatarImage(text, w, h, bgColor, props) {
 
-        console.log( "3 - generateAvatarImage() text:", text );
+        console.log( "1 - generateAvatarImage() props:", props ); // text:", text );
+
+        console.log(w);
+        console.log(h);
 
         let WIDTH = 256;
         let HEIGHT = 256;
         let canvas = null;
         let ctx = null;
         let fontsize = null;
+        let fontScale = 1;
+        let fontWeight = '100px';
 
-        if (w !== undefined && w > 0) {
-            if (h !== undefined && h > 0) {
-                WIDTH = w;
-                HEIGHT = h;
+        // if (w !== undefined && w > 0) {
+        //     if (h !== undefined && h > 0) {
+        //         WIDTH = w;
+        //         HEIGHT = h;
+        //     }
+        // } 
+
+        if ( (w !== undefined && w > 0) && (h !== undefined && h > 0) ) {
+            console.log( "1 - a");
+            WIDTH = w;
+            HEIGHT = h;
+        } else {
+            
+            if ( props.width ) {
+                console.log( "1 - b");
+                WIDTH = props.width;
+                HEIGHT = props.width;                
+            } else {
+                console.log( "1 - c");
+                WIDTH = 42;
+                HEIGHT = 42;  
             }
+
         }
 
         canvas = document.createElement('canvas');
-        canvas.id = `ngAvatar-${Date.now()}`;
+        canvas.id = `ajsr-avatar-${Date.now()}`;
         canvas.width = WIDTH;
         canvas.height = HEIGHT;
 
@@ -48,14 +71,14 @@ const AvatarUtils = {
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-        // - 1 -
-        //fontsize = WIDTH / (2 / (props.fontScale / 100));
-        //ctx.font = `${props.fontWeight} ${fontsize}px sans-serif`;
+        console.log(WIDTH);
+        console.log(HEIGHT);
+        console.log(fontScale);
 
-        // var fontScale = 1;
-        // fontsize = WIDTH / (2 / (fontScale / 100));
-        // var fontWeight = '100px';
-        // ctx.font = `${fontWeight} ${fontsize}px sans-serif`;
+        fontsize = WIDTH / (2 / (fontScale / 100));
+        console.log(fontsize);
+        console.log(fontWeight);
+        ctx.font = `${fontWeight} ${fontsize}px sans-serif`;
 
         if (props.textShadow === true) {
             ctx.shadowColor = 'black';
@@ -77,7 +100,7 @@ const AvatarUtils = {
         var resultObj = {};
         var _width;
 
-        console.log("[getStringImageStyles] props: ", props );
+        console.log("3 - getStringImageStyles, props: ", props );
 
         // 1 - width and height
 
@@ -112,7 +135,7 @@ const AvatarUtils = {
         var resultObj = {};
         var _width;
 
-        console.log("[getStringImageStyles] props: ", props );
+        console.log("4 - getStringImageStyles, props: ", props );
 
         // 1 - width and height
 
