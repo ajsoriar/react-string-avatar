@@ -97,6 +97,13 @@ const AvatarUtils = {
         } else if ( props.cornerRadius ) {
             resultObj.borderRadius = props.cornerRadius+'px';
         }
+
+        // 3 - pixelated
+
+        if ( props.pixelated === true ) {
+            resultObj.imageRendering = 'pixelated';
+            //resultObj.imageRendering = "-moz-crisp-edges";
+        };
         
         return resultObj;
     },
@@ -129,6 +136,7 @@ const AvatarUtils = {
         // n - extra
 
         resultObj.display = 'inline-block';
+        resultObj.boxSizing = 'unset';
         
         return resultObj;
     }

@@ -16,7 +16,7 @@ export default class Avatar extends Component {
             // extraclasses: "",
             // extraimgclasses: "",
             // extrastyles: "",
-            cornerradius: 0,
+            cornerRadius: 0,
             // pictureformat: "png",
             colorsPalette: [
                 '#bdc3c7',
@@ -105,34 +105,6 @@ export default class Avatar extends Component {
         // ------------------------------------------
         // Create HTML and styles wraping the image
         // ------------------------------------------
-
-        var imgStyling = {
-            imageRendering: 'pixelated',
-            imageRendering: '-moz-crisp-edges'
-        };
-
-        if (pixelated === true) {
-            imgStyling.imageRendering = 'pixelated';
-            // imgStyling.imageRendering = "-moz-crisp-edges";
-        };
-
-        var defaultWrapperStyling = {
-            overflow: 'hidden',
-            width: `${width}px`,
-            height: `${width}px`,
-            boxSizing: 'unset'
-        };
-
-        if (roundShape !== undefined) {
-            if (roundShape) {
-                defaultWrapperStyling.borderRadius = `${width}px`;
-                imgStyling.borderRadius = `${width}px`;
-            }
-        } else if (cornerRadius !== undefined) {
-            var cornerradius = cornerRadius;
-            defaultWrapperStyling.borderRadius = `${cornerradius}px`;
-            imgStyling.borderRadius = `${cornerradius}px`;
-        }
 
         var stringImageStyles = AvatarUtils.getStringImageStyles( this.props );
 
