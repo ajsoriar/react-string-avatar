@@ -36,35 +36,23 @@ const AvatarUtils = {
         let ctx = null;
         let fontsize = null;
         let fontScale = 2;
-        let fontWeight = '100'; // '100px';
-
+        let fontWeight = 100; // '100px';
 
         let default_bgcolor = "#000";
         let default_textcolor = "#fff";
 
-        // if (w !== undefined && w > 0) {
-        //     if (h !== undefined && h > 0) {
-        //         WIDTH = w;
-        //         HEIGHT = h;
-        //     }
-        // } 
-
-        if ( (w !== undefined && w > 0) && (h !== undefined && h > 0) ) {
+        if ( props.pictureResolution && props.pictureResolution > 0 ) {
             console.log( "1 - a");
-            WIDTH = w;
-            HEIGHT = h;
+            WIDTH = props.pictureResolution;
+            HEIGHT = props.pictureResolution;  
+        } else if ( props.width ) {
+            console.log( "1 - b");
+            WIDTH = props.width;
+            HEIGHT = props.width;                
         } else {
-            
-            if ( props.width ) {
-                console.log( "1 - b");
-                WIDTH = props.width;
-                HEIGHT = props.width;                
-            } else {
-                console.log( "1 - c");
-                WIDTH = Constants.DEFAULT_WIDTH;
-                HEIGHT = Constants.DEFAULT_WIDTH;
-            }
-
+            console.log( "1 - c");
+            WIDTH = Constants.DEFAULT_WIDTH;
+            HEIGHT = Constants.DEFAULT_WIDTH;
         }
 
         canvas = document.createElement('canvas');
@@ -80,7 +68,8 @@ const AvatarUtils = {
         console.log(HEIGHT);
         console.log(fontScale);
 
-        fontsize = 12; //WIDTH / (2 / (fontScale / 100));
+        //fontsize = 12; //WIDTH / (2 / (fontScale / 100));
+        fontsize = WIDTH / (2 / (fontScale / 100));
         console.log(fontsize);
         console.log(fontWeight);
         // ctx.font = "30px Arial";
@@ -113,7 +102,7 @@ const AvatarUtils = {
         // 1 - width and height
 
         if ( !props.width ) {
-            _width = 45;
+            _width = Constants.DEFAULT_WIDTH;
         } else {
             _width = props.width;
         }
