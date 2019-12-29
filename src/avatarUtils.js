@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Constants from './avatarConstants'
 
 const AvatarUtils = {
 
@@ -56,8 +57,8 @@ const AvatarUtils = {
                 HEIGHT = props.width;                
             } else {
                 console.log( "1 - c");
-                WIDTH = 42;
-                HEIGHT = 42;  
+                WIDTH = Constants.DEFAULT_WIDTH;
+                HEIGHT = Constants.DEFAULT_WIDTH;
             }
 
         }
@@ -140,7 +141,7 @@ const AvatarUtils = {
         // 1 - width and height
 
         if ( !props.width ) {
-            _width = 45;
+            _width = Constants.DEFAULT_WIDTH;
         } else {
             _width = props.width;
         }
