@@ -28,7 +28,7 @@ myAvatar2.story = {
     name: 'Avatar v2'
 };
 
-// v2 multi
+// v3 multi
 
 import Avatar3 from './../src/react-string-avatar.v3';
 

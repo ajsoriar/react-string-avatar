@@ -35,8 +35,12 @@ const AvatarUtils = {
         let canvas = null;
         let ctx = null;
         let fontsize = null;
-        let fontScale = 1;
-        let fontWeight = '100px';
+        let fontScale = 2;
+        let fontWeight = '100'; // '100px';
+
+
+        let default_bgcolor = "#000";
+        let default_textcolor = "#fff";
 
         // if (w !== undefined && w > 0) {
         //     if (h !== undefined && h > 0) {
@@ -76,10 +80,13 @@ const AvatarUtils = {
         console.log(HEIGHT);
         console.log(fontScale);
 
-        fontsize = WIDTH / (2 / (fontScale / 100));
+        fontsize = 12; //WIDTH / (2 / (fontScale / 100));
         console.log(fontsize);
         console.log(fontWeight);
-        ctx.font = `${fontWeight} ${fontsize}px sans-serif`;
+        // ctx.font = "30px Arial";
+        var font = `${fontWeight}px ${fontsize}px sans-serif`;
+        console.log(font);
+        ctx.font = font;
 
         if (props.textShadow === true) {
             ctx.shadowColor = 'black';
@@ -89,7 +96,7 @@ const AvatarUtils = {
         }
 
         ctx.textAlign = 'center';
-        ctx.fillStyle = props.textColor;
+        ctx.fillStyle = props.textColor ? props.textColor : default_textcolor;
         // ctx.fillText(text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (default.fontsize / 3) + 5 );
         ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + fontsize / 3);
 
