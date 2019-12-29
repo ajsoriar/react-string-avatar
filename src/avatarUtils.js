@@ -23,34 +23,32 @@ const AvatarUtils = {
         return output;
     },
 
-    generateAvatarImage(text, w, h, bgColor, props) {
+    generateAvatarImage(str, props) {
 
-        console.log( "1 - generateAvatarImage() props:", props ); // text:", text );
+        console.log( "1 - generateAvatarImage() props:", props );
 
-        console.log(w);
-        console.log(h);
+        if (!str) str = '';
 
         let WIDTH = 256;
         let HEIGHT = 256;
         let canvas = null;
         let ctx = null;
-        let fontSize = null;
+        let fontSize = 12;
         let fontScale = 100;
         let fontWeight = 300;
-
-        //let default_bgcolor = "#000";
         let default_textcolor = "#fff";
+        let font = "300 12px sans-serif";
 
         if ( props.pictureResolution && props.pictureResolution > 0 ) {
-            console.log( "1 - a");
+            // Use by default the desired resolution to create the picture of the avatar
             WIDTH = props.pictureResolution;
             HEIGHT = props.pictureResolution;  
         } else if ( props.width ) {
-            console.log( "1 - b");
+            //If resolution was not provided use width param
             WIDTH = props.width;
             HEIGHT = props.width;                
         } else {
-            console.log( "1 - c");
+            //If none of them were provided use default width of 45
             WIDTH = Constants.DEFAULT_WIDTH;
             HEIGHT = Constants.DEFAULT_WIDTH;
         }
@@ -61,20 +59,11 @@ const AvatarUtils = {
         canvas.height = HEIGHT;
 
         ctx = canvas.getContext('2d');
-        ctx.fillStyle = bgColor;
+        ctx.fillStyle = props.bgColor;
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-        console.log(WIDTH);
-        console.log(HEIGHT);
-        console.log(fontScale);
-
-        //fontSize = 12; //WIDTH / (2 / (fontScale / 100));
         fontSize = WIDTH / (2 / (fontScale / 100));
-        console.log(fontSize);
-        console.log(fontWeight);
-        // ctx.font = "30px Arial";
-        var font = fontWeight +" "+ fontSize +"px sans-serif";
-        console.log(font);
+        font = fontWeight +" "+ fontSize +"px sans-serif";
         ctx.font = font;
 
         if (props.textShadow === true) {
@@ -86,8 +75,7 @@ const AvatarUtils = {
 
         ctx.textAlign = 'center';
         ctx.fillStyle = props.textColor ? props.textColor : default_textcolor;
-        // ctx.fillText(text, WIDTH / 2, HEIGHT - (HEIGHT / 2) + (default.fontSize / 3) + 5 );
-        ctx.fillText(text, WIDTH / 2, HEIGHT - HEIGHT / 2 + fontSize / 3);
+        ctx.fillText(str, WIDTH / 2, HEIGHT - HEIGHT / 2 + fontSize / 3);
 
         return canvas.toDataURL(`image/${props.pictureFormat}`);
     },
