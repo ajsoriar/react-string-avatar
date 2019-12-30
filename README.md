@@ -73,7 +73,9 @@ You will get this:
 ```bash
 yarn install
 
-npm i -D @storybook/addon-actions
+yarn storybook
+
+yarn build
 ```
 
 ### 5 License

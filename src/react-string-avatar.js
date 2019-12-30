@@ -1,4 +1,5 @@
 
+import './header';
 import React, { Component } from 'react';
 import AvatarUtils from './avatarUtils';
 
