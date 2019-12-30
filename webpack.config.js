@@ -12,7 +12,7 @@ const config = {
   },
   output: {
     filename: outputFile, // 'main.js',
-    path: path.resolve(__dirname, 'lib'),
+    path: path.resolve(__dirname, 'dist'),
     // filename: 'react-string-avatar.js',
     filename: '[name].js',
     library: ''
