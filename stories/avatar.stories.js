@@ -1,5 +1,5 @@
 import React from "react";
-import { action } from '@storybook/addon-actions';
+//import { action } from '@storybook/addon-actions';
 
 export default {
   title: "Avatar"
@@ -22,7 +22,7 @@ myAvatar2.story = {
 export const myAvatar3 = () => (
     <div>
         <div>
-          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png?token=AAWWPRI7H3XBUZX5M3CYD726BE4MU"></img>
+          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png"></img>
         </div>
         {/* <Avatar string="AS"></Avatar> */}
         <Avatar initials="A" />
@@ -50,7 +50,7 @@ myAvatar3.story = {
 export const myAvatar1 = () => (
     <div>
         <div>
-          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png?token=AAWWPRLQBT3MGQZSKZDOSRK6BEZLC"></img>
+          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png"></img>
         </div>
         <Avatar initials="A" />
     </div>
