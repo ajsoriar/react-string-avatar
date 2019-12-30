@@ -10,11 +10,11 @@ const config = {
     'react-string-avatar': './src/react-string-avatar.js',
     'react-string-avatar.min': './src/react-string-avatar.js'
   },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'react-router': 'ReactRouter'
-  },
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM',
+  //   'react-router': 'ReactRouter'
+  // },
   output: {
     filename: outputFile, // 'main.js',
     path: path.resolve(__dirname, 'dist'),
