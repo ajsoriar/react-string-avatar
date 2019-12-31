@@ -1,12 +1,12 @@
 webpack.config.js
-
+webpack.local.config.js
+webpack.production.config.js
+.eslintrc
+.gitignore
 .babelrc
-
 scripts
 src
 demo
 stories
-.eslintrc
-.gitignore
 eslint-config.js
 yarn*

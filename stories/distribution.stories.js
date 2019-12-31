@@ -8,6 +8,7 @@ export default {
 
 //import Avatar from './../src/react-string-avatar.js';
 import Avatar from './../dist/react-string-avatar.js';
+//import Avatar from './../dist/react-string-avatar.min.js';
 
 export const myAvatarDistribution = () => (
     <div>
