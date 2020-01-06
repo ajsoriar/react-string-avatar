@@ -11,17 +11,21 @@ React String Avatar is an ES6 module/component for React that generates a letter
 
 ## Quick start
 
+### 1 Download and Install react-string-avatar
+
+From **npm**
+
 ```bash
 npm install react-string-avatar --save
 ```
 
-### 1 Download and Install react-string-avatar
+or **yarn**
 
-- Yarn: **yarn add react-string-avatar**
-- NPM: **npm install react-string-avatar** <!-- - NuGet: **PM> Install-Package react-string-avatar** -->
-- Bower: **bower install react-string-avatar**
-- github: **<https://github.com/ajsoriar/react-string-avatar>**
-<!-- - npmjs: **<https://www.npmjs.com/package/react-string-avatar>** -->
+```bash
+yarn add react-string-avatar --save
+```
+
+Source in github: **<https://github.com/ajsoriar/react-string-avatar>**
 
 ### 2 Import Custom Element
 
@@ -35,7 +39,7 @@ import Avatar from 'react-string-avatar';
 <Avatar initials="A"></Avatar>
 ```
 
-You will get this:
+You will get this:<br/>
 ![react-string-avatar basic usage example](./demo/react-string-avatar-basic-example.png?raw=true "react-string-avatar basic usage example")
 
 #### 3.1 More usage examples ready to copy and paste
@@ -70,7 +74,11 @@ You will get this:
 
 ### 4 Development
 
+Clone this repository, install dependencies and launch storybook.
+
 ```bash
+git clone https://github.com/ajsoriar/react-string-avatar.git
+
 yarn install
 
 yarn storybook
