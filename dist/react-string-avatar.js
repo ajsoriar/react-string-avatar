@@ -365,7 +365,8 @@ var AvatarUtils = {
 
         return resultObj;
     }
-}; //import React, { Component } from 'react';
+};
+
 exports.default = AvatarUtils;
 
 /***/ }),

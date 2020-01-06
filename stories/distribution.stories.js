@@ -1,14 +1,12 @@
-//import React from "react";
 import React, { Component } from 'react';
-//import { action } from '@storybook/addon-actions';
 
 export default {
   title: "Avatar Distribution"
 };
 
-//import Avatar from './../src/react-string-avatar.js';
-import Avatar from './../dist/react-string-avatar.js';
-//import Avatar from './../dist/react-string-avatar.min.js';
+//import Avatar from './../dist/react-string-avatar.js';
+import Avatar from './../src/react-string-avatar.js';
+//import Avatar from 'react-string-avatar';
 
 export const myAvatarDistribution = () => (
     <div>

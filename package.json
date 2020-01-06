@@ -28,8 +28,6 @@
     "react-dom": "^16.4.2"
   },
   "devDependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
@@ -49,6 +47,8 @@
     "html-webpack-plugin": "^3.2.0",
     "prettier": "^1.19.1",
     "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   },
@@ -63,5 +63,8 @@
   "bugs": {
     "url": "https://github.com/ajsoriar/react-string-avatar/issues"
   },
-  "homepage": "https://github.com/ajsoriar/react-string-avatar#readme"
+  "homepage": "https://github.com/ajsoriar/react-string-avatar#readme",
+  "dependencies": {
+    "react-string-avatar": "^1.1.1"
+  }
 }

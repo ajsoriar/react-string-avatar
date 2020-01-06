@@ -7772,6 +7772,11 @@ react-sizeme@^2.6.7:
     shallowequal "^1.1.0"
     throttle-debounce "^2.1.0"
 
+react-string-avatar@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-string-avatar/-/react-string-avatar-1.1.1.tgz#c013dfe8a248f4a645aa6bfd9ce1200eb12f14be"
+  integrity sha512-qSPUkc9TGhbYOIeTqow3XGSRUeC7FV2DX1ok9KAlJaLl5ZALfJu6Os/6QwsgtDMzMs2CMtpGCuEQaCnNPCtyBQ==
+
 react-syntax-highlighter@^8.0.1:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-8.1.0.tgz#59103ff17a828a27ed7c8f035ae2558f09b6b78c"

@@ -1,4 +1,3 @@
-//import React, { Component } from 'react';
 import Constants from './avatarConstants'
 
 const AvatarUtils = {
