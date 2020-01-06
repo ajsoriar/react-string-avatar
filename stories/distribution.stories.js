@@ -5,8 +5,8 @@ export default {
 };
 
 //import Avatar from './../dist/react-string-avatar.js';
-import Avatar from './../src/react-string-avatar.js';
-//import Avatar from 'react-string-avatar';
+//import Avatar from './../src/react-string-avatar.js';
+import Avatar from 'react-string-avatar'; // Distribution route
 
 export const myAvatarDistribution = () => (
     <div>
