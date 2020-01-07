@@ -35,8 +35,8 @@ const AvatarUtils = {
         let canvas = null;
         let ctx = null;
         let fontSize = 12;
-        const fontScale = 100;
-        const fontWeight = 300;
+        const fontScale = props.fontScale ? props.fontScale : 100;
+        const fontWeight = props.fontWeight ? props.fontWeight : 300;
         const defaultTextcolor = '#fff';
         let font = '300 12px sans-serif';
 
