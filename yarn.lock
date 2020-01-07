@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ajsr/eslint-config-react@^1.0.0-rc1":
-  version "1.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/@ajsr/eslint-config-react/-/eslint-config-react-1.0.0-rc1.tgz#44797d19857f8fd7bc76ed5b8fd71a2d87765216"
-  integrity sha512-FEZ5CBmU4ShGRZzEh1OfaxPdp2oavFrKJK2O9n1Ji5dcffHIxA5wTnhLPx7IjyP/kMB7GD2oizlR09lc2Cb+BQ==
+"@ajsr/eslint-config-react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ajsr/eslint-config-react/-/eslint-config-react-1.0.0.tgz#859086d3a8b6f4f1273973c4793672523c6fcd66"
+  integrity sha512-bIUGH+evjMerj4LyI5r4KFUQeq0pxFus0kpDp5qO9+HHyPDA5iGA1hYVKvmstWdvpI2lMCkVmOi8DU0Z1apJAg==
   dependencies:
     eslint "^6.8.0"
     eslint-config-airbnb "^18.0.1"
