@@ -10,3 +10,11 @@ demo
 stories
 eslint-config.js
 yarn*
+node_modules/
+/build
+/demo
+/docs
+/src
+/*.config.js
+/.*
+.DS_Store
