@@ -1,5 +1,5 @@
 {
-    "extends": [
-      "./eslint-config.js"
-    ]
+  "extends": [
+      "@ajsr/eslint-config-react"
+  ]
 }

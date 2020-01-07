@@ -28,6 +28,7 @@
     "react-dom": "^16.4.2"
   },
   "devDependencies": {
+    "@ajsr/eslint-config-react": "^1.0.0-rc1",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
@@ -65,6 +66,5 @@
     "url": "https://github.com/ajsoriar/react-string-avatar/issues"
   },
   "homepage": "https://github.com/ajsoriar/react-string-avatar#readme",
-  "dependencies": {
-  }
+  "dependencies": {}
 }

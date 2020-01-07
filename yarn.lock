@@ -2,6 +2,21 @@
 # yarn lockfile v1
 
 
+"@ajsr/eslint-config-react@^1.0.0-rc1":
+  version "1.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/@ajsr/eslint-config-react/-/eslint-config-react-1.0.0-rc1.tgz#44797d19857f8fd7bc76ed5b8fd71a2d87765216"
+  integrity sha512-FEZ5CBmU4ShGRZzEh1OfaxPdp2oavFrKJK2O9n1Ji5dcffHIxA5wTnhLPx7IjyP/kMB7GD2oizlR09lc2Cb+BQ==
+  dependencies:
+    eslint "^6.8.0"
+    eslint-config-airbnb "^18.0.1"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-import "^2.19.1"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-react "^7.17.0"
+    eslint-plugin-react-hooks "^2.3.0"
+    prettier "^1.19.1"
+
 "@babel/code-frame@7.5.5", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -4544,6 +4559,7 @@ eslint-visitor-keys@^1.1.0:
 eslint@^6.8.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.8.0.tgz#62262d6729739f9275723824302fb227c8c93ffb"
+  integrity sha512-K+Iayyo2LtyYhDSYwz5D5QdWw0hCacNzyq1Y821Xna2xSJj7cijoLLYmLxTQgcgZ9mC61nryMy9S7GRbYpI5Ig==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -7771,11 +7787,6 @@ react-sizeme@^2.6.7:
     invariant "^2.2.4"
     shallowequal "^1.1.0"
     throttle-debounce "^2.1.0"
-
-react-string-avatar@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-string-avatar/-/react-string-avatar-1.1.1.tgz#c013dfe8a248f4a645aa6bfd9ce1200eb12f14be"
-  integrity sha512-qSPUkc9TGhbYOIeTqow3XGSRUeC7FV2DX1ok9KAlJaLl5ZALfJu6Os/6QwsgtDMzMs2CMtpGCuEQaCnNPCtyBQ==
 
 react-syntax-highlighter@^8.0.1:
   version "8.1.0"
