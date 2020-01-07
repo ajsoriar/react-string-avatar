@@ -56,33 +56,33 @@ var letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
 let group_1 = [];
 for (i = 0; i < lon; i++) {
-  group_1.push( <Avatar initials={letters[i]}  autoColor="true" className="avatar" fontWeight="100" fontScale="150" ></Avatar>);
+  group_1.push( <Avatar initials={letters[i]}  autoColor={true} className="avatar" fontWeight="100" fontScale="150" ></Avatar>);
 }
 
 let group_2 = [];
 for (i = 0; i < lon; i++) {
     j = Math.floor( Math.random() * lon );
-    group_2.push(<Avatar initials={letters[i]+letters[j]} autoColor="true" className="avatar" fontWeight="400" fontScale="100" ></Avatar>);
+    group_2.push(<Avatar initials={letters[i]+letters[j]} autoColor={true} className="avatar" fontWeight="400" fontScale="100" ></Avatar>);
 }
 
 let group_3 = [];
 for (i = 0; i < lon; i++) {
     j = Math.floor( Math.random() * lon );
     k = Math.floor( Math.random() * lon );
-    group_3.push(<Avatar initials={ letters[i]+letters[j]+letters[k] } width="90" autoColor="true" className="avatar" fontWeight="700" fontScale="50" roundShape="true" ></Avatar>);
+    group_3.push(<Avatar initials={ letters[i]+letters[j]+letters[k] } width="90" autoColor={true} className="avatar" fontWeight="700" fontScale="50" roundShape="true" ></Avatar>);
 }
 
 let group_4 = [];
 for (i = 0; i < lon; i++) {
     j = Math.floor( Math.random() * lon );
     k = Math.floor( Math.random() * lon );
-    group_4.push(<Avatar initials={letters[i]} width="90" autoColor="true" className="avatar" fontWeight="100" fontScale="125" cornerRadius="7" textShadow="true" ></Avatar>);
+    group_4.push(<Avatar initials={letters[i]} width="90" autoColor={true} className="avatar" fontWeight="100" fontScale="125" cornerRadius="7" textShadow="true" ></Avatar>);
 }
 
 export const myAvatar1 = () => (
     <div>
         <div>
-          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png"></img>
+           <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png"></img>
         </div>
         Simplest example:<br/>
         <Avatar initials="A" /><br/>

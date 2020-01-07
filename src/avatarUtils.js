@@ -60,7 +60,23 @@ const AvatarUtils = {
         canvas.height = HEIGHT;
 
         ctx = canvas.getContext('2d');
-        ctx.fillStyle = props.bgColor;
+        // ctx.fillStyle = props.bgColor;
+
+        // Calculate color
+
+        // console.log("Incomming color: ",props.bgColor);
+        ctx.fillStyle = props.bgColor ? props.bgColor : '#000';
+
+        if (props.autoColor === true) {
+            const lon = str.length;
+            let charIndex = 0;
+            for (let i = 0; i < lon; i += 1) {
+                charIndex = str.charCodeAt(i);
+            }
+            const colorIndex = charIndex % Constants.colorsPalette.length;
+            ctx.fillStyle = Constants.colorsPalette[colorIndex];
+        }
+
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
         fontSize = WIDTH / (2 / (fontScale / 100));
