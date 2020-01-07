@@ -139,11 +139,12 @@ var Avatar = function (_Component) {
         value: function renderImage() {
             var _props = this.props,
                 initials = _props.initials,
-                wrapper = _props.wrapper;
+                wrapper = _props.wrapper,
+                string = _props.string;
 
-            //console.table(this.props);
+            // console.table(this.props);
 
-            var imgData = _avatarUtils2.default.generateAvatarImage(this.props.string ? _avatarUtils2.default.getInitialsFromString(this.props.string).toLocaleUpperCase() : initials, // TODO: .toLocaleUpperCase() forceUpperCase = {true};
+            var imgData = _avatarUtils2.default.generateAvatarImage(string ? _avatarUtils2.default.getInitialsFromString(string).toLocaleUpperCase() : initials, // TODO: .toLocaleUpperCase() forceUpperCase = {true};
             this.props);
 
             var stringImageStyles = _avatarUtils2.default.getStringImageStyles(this.props);
@@ -154,7 +155,7 @@ var Avatar = function (_Component) {
             var AvatarImage = function AvatarImage(_ref) {
                 var data = _ref.data,
                     style = _ref.style;
-                return _react2.default.createElement('img', { alt: 'Avatar image', src: '' + data, style: style });
+                return _react2.default.createElement('img', { alt: 'Avatar', src: '' + data, style: style });
             };
 
             if (wrapper) {
@@ -163,13 +164,13 @@ var Avatar = function (_Component) {
                     { className: 'avatar-wrapper ', style: stringWrapperStyles },
                     _react2.default.createElement(AvatarImage, { data: imgData, style: stringImageStyles })
                 );
-            } else {
-                return _react2.default.createElement(AvatarImage, { data: imgData, style: stringImageStyles });
             }
+
+            return _react2.default.createElement(AvatarImage, { data: imgData, style: stringImageStyles });
         }
     }, {
         key: 'render',
-        value: function render(state, props) {
+        value: function render() {
             return this.renderImage();
         }
     }]);
@@ -187,7 +188,7 @@ exports.default = Avatar;
 /**
  * react-string-avatar
  * React String Avatar is a simple React component that generates a letter's avatar like Microsoft or Google do in their web apps. First letter of each word in a string or a group of initials will be used to generate the avatar. The image of the avatar will be rendered in an html img tag as a real png or jpeg. The image data can be retrieved using javascript to be stored in back-end giving you an initial profile picture in your web or mobile apps when the user does not upload one. Several React props are available to configure the output: size, shape, resolution, colors, etc.
- * @version v1.1.1 - 2019-12-31
+ * @version v1.2.0 - 2020-01-07
  * @link https://github.com/ajsoriar/react-string-avatar
  * @author Andres J. Soria R. <ajsoriar@gmail.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -218,14 +219,14 @@ var _avatarConstants2 = _interopRequireDefault(_avatarConstants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AvatarUtils = {
-
     getInitialsFromString: function getInitialsFromString(str) {
-
-        console.log("2 - getInitialsFromString() str:", str);
+        // console.log('2 - getInitialsFromString() str:', str);
 
         if (!str) {
             return '';
         }
+
+        // eslint-disable-next-line no-param-reassign
         str = str.split(' ');
         var output = '';
         var i = 0;
@@ -240,31 +241,33 @@ var AvatarUtils = {
     },
 
     generateAvatarImage: function generateAvatarImage(str, props) {
+        // console.log('1 - generateAvatarImage() props:', props);
 
-        console.log("1 - generateAvatarImage() props:", props);
-
-        if (!str) str = '';
+        if (!str) {
+            // eslint-disable-next-line no-param-reassign
+            str = '';
+        }
 
         var WIDTH = 256;
         var HEIGHT = 256;
         var canvas = null;
         var ctx = null;
         var fontSize = 12;
-        var fontScale = 100;
-        var fontWeight = 300;
-        var default_textcolor = "#fff";
-        var font = "300 12px sans-serif";
+        var fontScale = props.fontScale ? props.fontScale : 100;
+        var fontWeight = props.fontWeight ? props.fontWeight : 300;
+        var defaultTextcolor = '#fff';
+        var font = '300 12px sans-serif';
 
         if (props.pictureResolution && props.pictureResolution > 0) {
             // Use by default the desired resolution to create the picture of the avatar
             WIDTH = props.pictureResolution;
             HEIGHT = props.pictureResolution;
         } else if (props.width) {
-            //If resolution was not provided use width param
+            // If resolution was not provided use width param
             WIDTH = props.width;
             HEIGHT = props.width;
         } else {
-            //If none of them were provided use default width of 45
+            // If none of them were provided use default width of 45
             WIDTH = _avatarConstants2.default.DEFAULT_WIDTH;
             HEIGHT = _avatarConstants2.default.DEFAULT_WIDTH;
         }
@@ -275,11 +278,28 @@ var AvatarUtils = {
         canvas.height = HEIGHT;
 
         ctx = canvas.getContext('2d');
-        ctx.fillStyle = props.bgColor;
+        // ctx.fillStyle = props.bgColor;
+
+        // Calculate color
+
+        // console.log("Incomming color: ",props.bgColor);
+        ctx.fillStyle = props.bgColor ? props.bgColor : '#000';
+
+        if (props.autoColor === true) {
+            var lon = str.length;
+            var charIndex = 0;
+            for (var i = 0; i < lon; i += 1) {
+                charIndex = str.charCodeAt(i);
+            }
+            var colorIndex = charIndex % _avatarConstants2.default.colorsPalette.length;
+            ctx.fillStyle = _avatarConstants2.default.colorsPalette[colorIndex];
+        }
+
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
         fontSize = WIDTH / (2 / (fontScale / 100));
-        font = fontWeight + " " + fontSize + "px sans-serif";
+        // font = fontWeight + ' ' + fontSize + 'px sans-serif';
+        font = fontWeight + ' ' + fontSize + 'px sans-serif';
         ctx.font = font;
 
         if (props.textShadow === true) {
@@ -290,7 +310,7 @@ var AvatarUtils = {
         }
 
         ctx.textAlign = 'center';
-        ctx.fillStyle = props.textColor ? props.textColor : default_textcolor;
+        ctx.fillStyle = props.textColor ? props.textColor : defaultTextcolor;
         ctx.fillText(str, WIDTH / 2, HEIGHT - HEIGHT / 2 + fontSize / 3);
 
         return canvas.toDataURL('image/' + props.pictureFormat);
@@ -298,27 +318,26 @@ var AvatarUtils = {
 
 
     getStringImageStyles: function getStringImageStyles(props) {
-
         var resultObj = {};
-        var _width;
+        var w = null;
 
-        console.log("3 - getStringImageStyles, props: ", props);
+        // console.log('3 - getStringImageStyles, props: ', props);
 
         // 1 - width and height
 
         if (!props.width) {
-            _width = _avatarConstants2.default.DEFAULT_WIDTH;
+            w = _avatarConstants2.default.DEFAULT_WIDTH;
         } else {
-            _width = props.width;
+            w = props.width;
         }
 
-        resultObj.width = _width + 'px';
-        resultObj.height = _width + 'px';
+        resultObj.width = w + 'px';
+        resultObj.height = w + 'px';
 
         // 2 - round shape
 
         if (props.roundShape) {
-            resultObj.borderRadius = _width + 'px';
+            resultObj.borderRadius = w + 'px';
         } else if (props.cornerRadius) {
             resultObj.borderRadius = props.cornerRadius + 'px';
         }
@@ -327,33 +346,33 @@ var AvatarUtils = {
 
         if (props.pixelated === true) {
             resultObj.imageRendering = 'pixelated';
-            //resultObj.imageRendering = "-moz-crisp-edges";
-        };
+            // resultObj.imageRendering = "-moz-crisp-edges";
+        }
 
         return resultObj;
     },
 
     getStringWrapperStyles: function getStringWrapperStyles(props) {
         var resultObj = {};
-        var _width;
+        var w = null;
 
-        console.log("4 - getStringImageStyles, props: ", props);
+        // console.log('4 - getStringImageStyles, props: ', props);
 
         // 1 - width and height
 
         if (!props.width) {
-            _width = _avatarConstants2.default.DEFAULT_WIDTH;
+            w = _avatarConstants2.default.DEFAULT_WIDTH;
         } else {
-            _width = props.width;
+            w = props.width;
         }
 
-        resultObj.width = _width + 'px';
-        resultObj.height = _width + 'px';
+        resultObj.width = w + 'px';
+        resultObj.height = w + 'px';
 
         // 2 - round shape
 
         if (props.roundShape) {
-            resultObj.borderRadius = _width + 'px';
+            resultObj.borderRadius = w + 'px';
         } else if (props.cornerRadius) {
             resultObj.borderRadius = props.cornerRadius + 'px';
         }
@@ -380,7 +399,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var AvatarConstants = {
-    DEFAULT_WIDTH: 42
+    DEFAULT_WIDTH: 42,
+    colorsPalette: ['#bdc3c7', '#6f7b87', '#2c3e50', '#2f3193', '#662d91', '#922790', '#ec2176', '#ed1c24', '#f36622', '#f8941e', '#fab70f', '#fdde00', '#d1d219', '#8ec73f', '#00a650', '#00aa9c', '#00adef', '#0081cd', '#005bab']
 };
 
 exports.default = AvatarConstants;
