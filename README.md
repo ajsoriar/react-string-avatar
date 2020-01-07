@@ -9,6 +9,8 @@ React String Avatar is an ES6 module/component for React that generates a letter
 
 ![react-string-avatar auto-color feature examples](./demo/react-string-avatar-autocolor-example.png?raw=true "react-string-avatar auto-color feature examples")
 
+**Live** example here: **<https://www.subidote.com/react-string-avatar/?path=/story/avatar--my-avatar-1>**
+
 ## Quick start
 
 ### 1 Download and Install react-string-avatar
