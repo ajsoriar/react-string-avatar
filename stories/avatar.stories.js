@@ -75,7 +75,7 @@ const group4 = [];
 for (i = 0; i < lon; i++) {
     j = Math.floor(Math.random() * lon);
     k = Math.floor(Math.random() * lon);
-    group4.push(<Avatar initials={letters[i]} width={90} autoColor={true} className="avatar" fontWeight={100} fontScale={125} cornerRadius="7" textShadow="true" />);
+    group4.push(<Avatar initials={letters[i]} width={90} autoColor={true} className="avatar" fontWeight={100} fontScale={125} cornerRadius="7" textShadow={true} />);
 }
 
 export const myAvatar1 = () => (
