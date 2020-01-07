@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export default {
-  title: "Avatar Distribution"
+    title: 'Avatar Distribution'
 };
 
-//import Avatar from './../dist/react-string-avatar.js';
-//import Avatar from './../src/react-string-avatar.js';
+// import Avatar from './../dist/react-string-avatar.js';
+// import Avatar from './../src/react-string-avatar.js';
 import Avatar from 'react-string-avatar'; // Distribution route
 
 export const myAvatarDistribution = () => (
     <div>
         <div>
-          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png"></img>
+            <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png" />
         </div>
-        {/* <Avatar string="AS"></Avatar> */}
         <Avatar initials="A" />
         <Avatar initials="AS" bgColor="#00FF00" />
-        <Avatar initials="AJS" bgColor="cyan" textColor="blue" roundShape="true" ></Avatar>
+        <Avatar initials="AJS" bgColor="cyan" textColor="blue" roundShape="true"  />
         <Avatar initials="AJ" bgColor="red" textColor="yellow" pictureResolution={512} width={64} />
         <Avatar initials="AJ" bgColor="yellow" textColor="green" pictureResolution={1024} width={32} />
         <Avatar initials="AS" bgColor="lightgreen" textColor="red" pictureResolution={16} width={128} pixelated={false} />
