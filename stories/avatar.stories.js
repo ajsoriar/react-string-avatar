@@ -1,17 +1,14 @@
-import React from "react";
-//import { action } from '@storybook/addon-actions';
+import React from 'react';
+import Avatar from '../src/react-string-avatar.v3';
+// import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "Avatar"
+    title: 'Avatar'
 };
-
-import Avatar from './../src/react-string-avatar.v3';
 
 // v1
 
-export const myAvatar2 = () => (
-  <Avatar string="AS"></Avatar>
-);
+export const myAvatar2 = () => <Avatar string="AS" />;
 
 myAvatar2.story = {
     name: 'Simplest example'
@@ -22,12 +19,15 @@ myAvatar2.story = {
 export const myAvatar3 = () => (
     <div>
         <div>
-          <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png"></img>
+            <img
+                alt="Example"
+                src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-examples.png"
+            />
         </div>
         {/* <Avatar string="AS"></Avatar> */}
         <Avatar initials="A" />
         <Avatar initials="AS" bgColor="#00FF00" />
-        <Avatar initials="AJS" bgColor="cyan" textColor="blue" roundShape="true" ></Avatar>
+        <Avatar initials="AJS" bgColor="cyan" textColor="blue" roundShape="true" />
         <Avatar initials="AJ" bgColor="red" textColor="yellow" pictureResolution={512} width={64} />
         <Avatar initials="AJ" bgColor="yellow" textColor="green" pictureResolution={1024} width={32} />
         <Avatar initials="AS" bgColor="lightgreen" textColor="red" pictureResolution={16} width={128} pixelated={false} />
@@ -47,53 +47,55 @@ myAvatar3.story = {
 
 // v3
 
+const letters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let i;
+let j;
+let k;
+const lon = letters.length;
 
-var letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    i,
-    j,
-    k,
-    lon = letters.length;
-
-let group_1 = [];
+const group1 = [];
 for (i = 0; i < lon; i++) {
-  group_1.push( <Avatar initials={letters[i]}  autoColor={true} className="avatar" fontWeight="100" fontScale="150" ></Avatar>);
+    group1.push(<Avatar initials={letters[i]}  autoColor={true} className="avatar" fontWeight={100} fontScale={150} />);
 }
 
-let group_2 = [];
+const group2 = [];
 for (i = 0; i < lon; i++) {
-    j = Math.floor( Math.random() * lon );
-    group_2.push(<Avatar initials={letters[i]+letters[j]} autoColor={true} className="avatar" fontWeight="400" fontScale="100" ></Avatar>);
+    j = Math.floor(Math.random() * lon);
+    group2.push(<Avatar initials={letters[i]+letters[j]} autoColor={true} className="avatar" fontWeight={400} fontScale={100} />);
 }
 
-let group_3 = [];
+const group3 = [];
 for (i = 0; i < lon; i++) {
-    j = Math.floor( Math.random() * lon );
-    k = Math.floor( Math.random() * lon );
-    group_3.push(<Avatar initials={ letters[i]+letters[j]+letters[k] } width="90" autoColor={true} className="avatar" fontWeight="700" fontScale="50" roundShape="true" ></Avatar>);
+    j = Math.floor(Math.random() * lon);
+    k = Math.floor(Math.random() * lon);
+    group3.push(<Avatar initials={ letters[i]+letters[j]+letters[k] } width={90} autoColor={true} className="avatar" fontWeight={700} fontScale={50} roundShape="true" />);
 }
 
-let group_4 = [];
+const group4 = [];
 for (i = 0; i < lon; i++) {
-    j = Math.floor( Math.random() * lon );
-    k = Math.floor( Math.random() * lon );
-    group_4.push(<Avatar initials={letters[i]} width="90" autoColor={true} className="avatar" fontWeight="100" fontScale="125" cornerRadius="7" textShadow="true" ></Avatar>);
+    j = Math.floor(Math.random() * lon);
+    k = Math.floor(Math.random() * lon);
+    group4.push(<Avatar initials={letters[i]} width={90} autoColor={true} className="avatar" fontWeight={100} fontScale={125} cornerRadius="7" textShadow="true" />);
 }
 
 export const myAvatar1 = () => (
     <div>
         <div>
-           <img src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png"></img>
+            <img
+                alt="Example"
+                src="https://raw.githubusercontent.com/ajsoriar/react-string-avatar/master/demo/react-string-avatar-autocolor-example.png"
+            />
         </div>
-        Simplest example:<br/>
-        <Avatar initials="A" /><br/>
-        All colors:<br/>
-        {group_1}<br/>
-        Two characters:<br/>
-        {group_2}<br/>
-        Round shape and three characters:<br/>
-        {group_3}<br/>
-        Border radius:<br/>
-        {group_4}<br/>
+        Simplest example:<br />
+        <Avatar initials="A" /><br />
+        All colors:<br />
+        {group1}<br />
+        Two characters:<br />
+        {group2}<br />
+        Round shape and three characters:<br />
+        {group3}<br />
+        Border radius:<br />
+        {group4}<br />
     </div>
 );
 
