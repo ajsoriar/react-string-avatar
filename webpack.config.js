@@ -1,6 +1,4 @@
 const path = require('path');
-const libraryName = 'library';
-const outputFile = `${libraryName}.js`;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
@@ -9,13 +7,7 @@ const config = {
         'react-string-avatar': './src/react-string-avatar.js',
         'react-string-avatar.min': './src/react-string-avatar.js'
     },
-    // externals: {
-    //   'react': 'React',
-    //   'react-dom': 'ReactDOM',
-    //   'react-router': 'ReactRouter'
-    // },
     output: {
-        filename: outputFile, // 'main.js',
         path: path.resolve(__dirname, 'dist'),
         // filename: 'react-string-avatar.js',
         filename: '[name].js',
@@ -26,7 +18,6 @@ const config = {
         publicPath: '/dist/',
         umdNamedDefine: true
     },
-    // externals: ['react', 'prop-types'], // This line is key! or React will be included in the bundle!!!
     module: {
         rules: [
             {
@@ -38,7 +29,6 @@ const config = {
             }
         ]
     },
-
     optimization: {
         minimize: true,
         minimizer: [
@@ -53,6 +43,12 @@ const config = {
             'react-dom': path.resolve(__dirname, './node_modules/react-dom')
         }
     },
+    // externals: ['react', 'prop-types'], // This line is key! or React will be included in the bundle!!!
+    // externals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM',
+    //   'react-router': 'ReactRouter'
+    // },
     externals: {
         // Don't bundle react or react-dom
         react: {
